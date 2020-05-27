@@ -30,7 +30,7 @@ async def deletecourse(ctx, cat_id):
 		if category.id == int(cat_id):
 			await ctx.send("deleting " + category.name)
 			text_channels = category.channels
-			for channel in channels:
+			for channel in text_channels:
 				await channel.delete()
 
 #run bot
