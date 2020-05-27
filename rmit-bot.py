@@ -44,6 +44,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 						await role.delete()
 
 @bot.command()
+@has_permissions(administrator=True)
 async def help(ctx):
 	help_embed = discord.Embed(
 		title = 'Help',
