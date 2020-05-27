@@ -22,6 +22,7 @@ async def createcourse(ctx, *, arg):
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
+	await ctx.send('Created `' + category.name + '`')
 
 @bot.command()
 async def deletecourse(ctx, cat_id, delete_role=None):
@@ -29,7 +30,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 	categories = guild.categories
 	for category in categories:
 		if category.id == int(cat_id):
-			await ctx.send("deleting " + category.name)
+			await ctx.send("Deleting `" + category.name + '`')
 			text_channels = category.channels
 			text_channels = category.channels
 			for channel in text_channels:
