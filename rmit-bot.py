@@ -65,7 +65,6 @@ async def archivecourse(ctx, cat_id):
 	match = False
 	i = 0
 	while(i < len(categories) and match==False):
-		await ctx.send('target category found!')
 		if categories[i].name == 'archives':
 			archive_category = categories[i].id
 			await ctx.send('archive category found!')
@@ -73,7 +72,11 @@ async def archivecourse(ctx, cat_id):
 		i+=1
 	if match==False:
 		archive_category = await guild.create_category('archives')
-	
+	for category in categories:
+		if category.id == int(cat_id):
+			channels = category.channels
+			for channel in channels:
+				await channel.edit(category=archive_category)
 
 @bot.command()
 async def help(ctx):
