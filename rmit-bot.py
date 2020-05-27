@@ -82,7 +82,7 @@ async def archivecourse(ctx, cat_id):
 
 @bot.command()
 async def linkme(ctx, *, arg):
-	if lower(arg) == 'student support':
+	if arg == 'support':
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 
 @bot.command()
