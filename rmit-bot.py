@@ -64,6 +64,7 @@ async def archivecourse(ctx, cat_id):
 	i = 0
 	while(i < len(categories) and match==False):
 		await ctx.send(categories[i].name)
+		i++
 			
 			
 
