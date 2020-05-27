@@ -8,7 +8,7 @@ bot.remove_command("help")
 @bot.event
 async def on_ready():
 	print('online')
-	await bot.change_presence(activity=discord.Game(name="yay!"))
+	await bot.change_presence(activity=discord.Game(name=".rmit help"))
 	
 @bot.command()
 @has_permissions(administrator=True)
@@ -65,7 +65,7 @@ async def archivecourse(ctx, cat_id):
 	match = False
 	i = 0
 	while(i < len(categories) and match==False):
-		if categories[i].name == 'archives':
+		if lower(categories[i].name) == 'archives':
 			archive_category = categories[i].id
 			await ctx.send('archive category found!')
 			match = True
@@ -79,6 +79,11 @@ async def archivecourse(ctx, cat_id):
 			for channel in channels:
 				await channel.edit(category=archive_category)
 			await category.delete()
+
+@bot.command()
+async def linkme(ctx, *, arg):
+	if lower(arg) == 'student support':
+		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 
 @bot.command()
 async def help(ctx):
