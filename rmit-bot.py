@@ -29,13 +29,13 @@ async def createcourse(ctx, *, arg):
 @bot.command()
 async def deletecourse(ctx, cat_id):
 	guild = ctx.message.guild
-			await ctx.send('0')
+	await ctx.send('0')
 	categories = guild.categories
-			await ctx.send('1')
+	await ctx.send('1')
 	for category in categories:
-			await ctx.send('2')
+		await ctx.send('2')
 		await ctx.send(str(category.id))
-			await ctx.send('3')
+		await ctx.send('3')
 		if category.id == cat_id:
 			await ctx.send('match!')
 			await ctx.send(category.name)
