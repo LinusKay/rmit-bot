@@ -13,10 +13,12 @@ async def copyme(ctx, *, arg):
 	await ctx.send(arg)
 	
 @bot.command()
-async def createclass(ctx, arg):
+async def createclass(ctx, *, arg):
 	guild = ctx.message.guild
 	cat = await guild.create_category(arg)
-	await guild.create_text_channel(cat.name + '-general', category=cat)
+	cat_name = cat.name
+	cat_name_short = arg
+	await guild.create_text_channel(cat_name_short + '-general', category=cat)
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
