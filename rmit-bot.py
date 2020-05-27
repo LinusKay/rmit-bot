@@ -70,10 +70,10 @@ async def archivecourse(ctx, cat_id):
 			archive_category = categories[i].id
 			await ctx.send('archive category found!')
 			match = True
-		else:
-			i+=1
+		i+=1
 	if match==False:
 		archive_category = await guild.create_category('archives')
+	
 
 @bot.command()
 async def help(ctx):
