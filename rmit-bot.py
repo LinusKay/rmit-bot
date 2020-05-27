@@ -22,7 +22,8 @@ async def createclass(ctx, *, arg):
 	await guild.create_text_channel(cat_name_short + '-general', category=cat)
 	await guild.create_text_channel(cat_name_short + '-assignments', category=cat)
 	await guild.create_text_channel(cat_name_short + '-lectures', category=cat)
-	await guild.create_role(name=cat.name)
+	role = await guild.create_role(name=cat.name)
+	await cat.set_permissions(role, send_messages=True)
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
