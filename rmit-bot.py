@@ -14,18 +14,21 @@ async def on_ready():
 @has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
 	args = arg.split(',')
+	coursecode = args[1]
 	guild = ctx.message.guild
 	categories = guild.categories
 	category = await guild.create_category(args[0])
 	words = category.name.split()
 	letters = [word[0] for word in words]
 	category_abbrev = "".join(letters)
+	
 	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
-	await text_channel.edit(topic='Discuss ' + category.name + '!')
+	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + '!')
 	text_channel = await guild.create_text_channel(category_abbrev + '-assignments', category=category)
-	await text_channel.edit(topic='Discuss ' + category.name + ' assignments!')
+	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' assignments!')
 	text_channel = await guild.create_text_channel(category_abbrev + '-lectures', category=category)
-	await text_channel.edit(topic='Discuss ' + category.name + ' lectures!')
+	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' lectures!')
+	
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
