@@ -56,6 +56,18 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 						await role.delete()
 
 @bot.command()
+@has_permissions(administrator=True)
+async def archivecourse(ctx, cat_id):
+	guild = ctx.message.guild
+	categories = guild.categories
+	match = False
+	i = 0
+	while(i < len(categories) and match==False):
+		await ctx.send(categories[i].name)
+			
+			
+
+@bot.command()
 async def help(ctx):
 	help_embed = discord.Embed(
 		title = 'RMIT Bot Commands',
