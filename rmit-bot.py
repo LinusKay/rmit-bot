@@ -24,12 +24,11 @@ async def createcourse(ctx, *, arg):
 
 @bot.command()
 async def deletecourse(ctx, cat_id):
-	await ctx.send(str(cat_id))
 	guild = ctx.message.guild
 	categories = guild.categories
 	for category in categories:
 		await ctx.send(str(category.id))
-		if category.id == 715135735816257627:
+		if category.id == int(cat_id):
 			await ctx.send("match!")
 			await ctx.send(category.name)
 
