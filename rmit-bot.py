@@ -26,6 +26,7 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 
+@bot.command()
 async def deletecourse(ctx, cat_id):
 	guild = ctx.message.guild
 			await ctx.send('0')
