@@ -60,12 +60,12 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 async def archivecourse(ctx, cat_id):
 	guild = ctx.message.guild
 	categories = guild.categories
-	archive_category = None
+	archive_category = 0
 	match = False
 	i = 0
 	while(i < len(categories) and match==False):
 		await ctx.send(categories[i].name)
-		if lower(categories[i].name) == 'archives':
+		if categories[i].name == 'archives':
 			archive_category = categories[i].id
 			await ctx.send('archive category found!')
 		else:
