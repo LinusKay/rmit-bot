@@ -20,6 +20,8 @@ async def createclass(ctx, *, arg):
 	letters = [word[0] for word in words]
 	cat_name_short = "".join(letters)
 	await guild.create_text_channel(cat_name_short + '-general', category=cat)
+	await guild.create_text_channel(cat_name_short + '-assignments', category=cat)
+	await guild.create_text_channel(cat_name_short + '-lectures', category=cat)
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
