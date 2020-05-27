@@ -24,6 +24,7 @@ async def createcourse(ctx, *, arg):
 
 @bot.command()
 async def deletecourse(ctx, cat_id):
+	await ctx.send(str(cat_id))
 	guild = ctx.message.guild
 	categories = guild.categories
 	for category in categories:
