@@ -16,7 +16,7 @@ async def copyme(ctx, *, arg):
 async def createclass(ctx, arg):
 	guild = ctx.message.guild
 	cat = await guild.create_category(arg)
-	await guild.create_text_channel('general', category=cat)
+	await guild.create_text_channel(cat.name + '-general', category=cat)
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
