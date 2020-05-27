@@ -24,18 +24,16 @@ async def createcourse(ctx, *, arg):
 	words = category.name.split()
 	letters = [word[0] for word in words]
 	category_abbrev = "".join(letters)
-	
 	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
 	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + '!')
 	text_channel = await guild.create_text_channel(category_abbrev + '-assignments', category=category)
 	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' assignments!')
 	text_channel = await guild.create_text_channel(category_abbrev + '-lectures', category=category)
 	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' lectures!')
-	
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
-	await ctx.send('Created course`' + category.name + '`')
+	await ctx.send('Created course `' + category.name + '`')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -64,6 +62,10 @@ async def help(ctx):
 		description = 'How to use the RMIT Bot',
 		colour = 0xE00303
 		)
+	help_embed.add_field(name="Commands", value='''
+`.rmit createcourse <course name>[, course code]` - Create a private course category with standard channels, and course role.
+`.rmit deletecourse <category id> [delete role]` - Delete a course using category ID. Second param will delete the role too.
+	''')
 	await ctx.send(embed=help_embed)
 
 #run bot
