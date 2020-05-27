@@ -84,11 +84,13 @@ async def archivecourse(ctx, cat_id):
 async def help(ctx):
 	help_embed = discord.Embed(
 		title = 'RMIT Bot Commands',
-		description = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT',
+		description = 'Find out what I can do!',
 		colour = 0xE00303
 		)
 	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role.', inline=False)
 	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too.', inline=False)
+	help_embed.add_field(name='.rmit archivecourse <category id>', value='Archive a course using category ID. Will place in private Archives category and keep role.', inline=False)
+	help_embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=help_embed)
 
 #run bot
