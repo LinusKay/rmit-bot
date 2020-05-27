@@ -65,7 +65,7 @@ async def archivecourse(ctx, cat_id):
 	match = False
 	i = 0
 	while(i < len(categories) and match==False):
-		if lower(categories[i].name) == 'archives':
+		if categories[i].name.lower() == 'archives':
 			archive_category = categories[i].id
 			await ctx.send('archive category found!')
 			match = True
@@ -82,7 +82,7 @@ async def archivecourse(ctx, cat_id):
 
 @bot.command()
 async def linkme(ctx, *, arg):
-	if arg == 'support':
+	if arg.lower() == 'student support':
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 
 @bot.command()
