@@ -7,6 +7,11 @@ bot = commands.Bot(command_prefix='.rmit')
 async def on_ready():
 	print('online')
 	await bot.change_presence(activity=discord.Game(name="yay!"))
+
+@bot.event
+async def on_message(message):
+	if 'aaa' in message.content:
+		await message.channel.send("AAA")
 	
 @bot.command()
 async def copyme(ctx, *, arg):
