@@ -58,12 +58,12 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 @bot.command()
 async def help(ctx):
 	help_embed = discord.Embed(
-		title = 'Help',
-		description = 'RMIT Bot commands',
+		title = 'RMIT Bot Commands',
+		description = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT',
 		colour = 0xE00303
 		)
-	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role.')
-	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too.')
+	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role.', inline=False)
+	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too.', inline=False)
 	await ctx.send(embed=help_embed)
 
 #run bot
