@@ -1,1 +1,1 @@
-start cmd /k bot.py
+start cmd /k rmit-bot.py

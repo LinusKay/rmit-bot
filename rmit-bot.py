@@ -9,8 +9,9 @@ async def on_ready():
 	await bot.change_presence(activity=discord.Game(name="yay!"))
 	
 @bot.command()
-async def testcmd(ctx):
-	await ctx.send('hello world!')
+async def copyme(ctx, *, arg):
+	await ctx.send(arg)
+	await ctx.message.delete()
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
