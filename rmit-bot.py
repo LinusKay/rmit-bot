@@ -14,7 +14,10 @@ async def on_ready():
 @has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
 	args = arg.split(',')
-	course_code = args[1]
+	if len(args) > 1:
+		course_code = args[1]
+	else:
+		course_code = ''
 	guild = ctx.message.guild
 	categories = guild.categories
 	category = await guild.create_category(args[0])
