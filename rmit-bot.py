@@ -22,7 +22,7 @@ async def createcourse(ctx, *, arg):
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
-	await ctx.send('Created `' + category.name + '`')
+	await ctx.send('Created course`' + category.name + '`')
 
 @bot.command()
 async def deletecourse(ctx, cat_id, delete_role=None):
@@ -30,7 +30,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 	categories = guild.categories
 	for category in categories:
 		if category.id == int(cat_id):
-			await ctx.send("Deleting `" + category.name + '`')
+			await ctx.send("Deleted course `" + category.name + '`')
 			text_channels = category.channels
 			text_channels = category.channels
 			for channel in text_channels:
@@ -40,8 +40,17 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 				roles = guild.roles
 				for role in roles:
 					if role.name == category.name:
+						await ctx.send("Deleted role `" + role.name + '`')
 						await role.delete()
-			
+
+@bot.command()
+async def help(ctx):
+	help_embed = discord.Embed(
+		title = 'Help',
+		description = 'How to use the RMIT Bot',
+		colour = 0xE00303
+		)
+	await ctx.send(embed=help_embed)
 
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
