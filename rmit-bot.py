@@ -20,9 +20,11 @@ async def createcourse(ctx, *, arg):
 	letters = [word[0] for word in words]
 	category_abbrev = "".join(letters)
 	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
-	await text_channel.edit(topic='test')
+	await text_channel.edit(topic='Discuss ' + category.name + '!')
 	await guild.create_text_channel(category_abbrev + '-assignments', category=category)
+	await text_channel.edit(topic='Discuss ' + category.name + ' assignments!')
 	await guild.create_text_channel(category_abbrev + '-lectures', category=category)
+	await text_channel.edit(topic='Discuss ' + category.name + ' lectures!')
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
