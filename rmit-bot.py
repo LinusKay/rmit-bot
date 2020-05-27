@@ -31,7 +31,7 @@ async def deletecourse(ctx, cat_id):
 	categories = guild.categories
 	for category in categories:
 		await ctx.send(category.id)
-		if category.id = cat_id:
+		if category.id == cat_id:
 			await ctx.send('match!')
 			await ctx.send(category.name)
 
