@@ -72,11 +72,13 @@ async def archivecourse(ctx, cat_id):
 		i+=1
 	if match==False:
 		archive_category = await guild.create_category('archives')
+		await archive_category.set_permissions(guild.default_role, read_messages=False)
 	for category in categories:
 		if category.id == int(cat_id):
 			channels = category.channels
 			for channel in channels:
 				await channel.edit(category=archive_category)
+			await category.delete()
 
 @bot.command()
 async def help(ctx):
