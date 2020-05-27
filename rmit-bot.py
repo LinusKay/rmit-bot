@@ -10,6 +10,11 @@ async def on_ready():
 	print('online')
 	await bot.change_presence(activity=discord.Game(name=".rmit help"))
 	
+@bot.event
+async def on_member_join(member):
+	channel = discord.utils.get(member.guild.channels, name="welcome")
+	await channel.send('welcome!')
+
 @bot.command()
 @has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
