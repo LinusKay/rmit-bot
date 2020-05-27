@@ -11,7 +11,11 @@ async def on_ready():
 @bot.command()
 async def copyme(ctx, *, arg):
 	await ctx.send(arg)
-	await ctx.message.delete()
+	
+@bot.command()
+async def createclass(ctx, arg)
+	guild = ctx.message.guild
+	await guild.create_text_channel(arg)
 	
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
