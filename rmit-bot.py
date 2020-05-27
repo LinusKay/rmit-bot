@@ -11,13 +11,16 @@ async def on_ready():
 	await bot.change_presence(activity=discord.Game(name="yay!"))
 	
 @bot.command()
+@has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
 	guild = ctx.message.guild
+	categories = guild.categories
 	category = await guild.create_category(arg)
 	words = category.name.split()
 	letters = [word[0] for word in words]
 	category_abbrev = "".join(letters)
-	await guild.create_text_channel(category_abbrev + '-general', category=category)
+	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
+	await text_channel.edit(topic='test')
 	await guild.create_text_channel(category_abbrev + '-assignments', category=category)
 	await guild.create_text_channel(category_abbrev + '-lectures', category=category)
 	course_role = await guild.create_role(name=category.name)
@@ -26,6 +29,7 @@ async def createcourse(ctx, *, arg):
 	await ctx.send('Created course`' + category.name + '`')
 
 @bot.command()
+@has_permissions(administrator=True)
 async def deletecourse(ctx, cat_id, delete_role=None):
 	guild = ctx.message.guild
 	categories = guild.categories
@@ -45,7 +49,6 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 						await role.delete()
 
 @bot.command()
-@has_permissions(administrator=True)
 async def help(ctx):
 	help_embed = discord.Embed(
 		title = 'Help',
