@@ -13,7 +13,7 @@ async def copyme(ctx, *, arg):
 	await ctx.send(arg)
 	
 @bot.command()
-async def createclass(ctx, arg)
+async def createclass(ctx, arg):
 	guild = ctx.message.guild
 	await guild.create_text_channel(arg)
 	
