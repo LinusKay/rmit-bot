@@ -39,7 +39,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 				roles = guild.roles
 				for role in roles:
 					if role.name == category.name:
-						await ctx.send('found role')
+						await role.delete()
 			
 
 #run bot
