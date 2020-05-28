@@ -96,7 +96,6 @@ async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
 		if arg is None:
-			await ctx.send('aa')
 			melbourne_buildings = ''
 			bundoora_buildings = ''
 			brunswick_buildings = ''
@@ -110,16 +109,19 @@ async def building(ctx, arg=None):
 					bundoora_buildings = bundoora_buildings + building_name + ', '
 				elif building_campus == 'Brunswick Campus':
 					brunswick_buildings = brunswick_buildings + building_name + ', '
-			building_embed = discord.Embed(
+			await ctx.send(melbourne_buildings)
+			await ctx.send(bundoora_buildings)
+			await ctx.send(brunswick_buildings)
+			building_embed2 = discord.Embed(
 				title = 'Find a building',
 				description = 'All RMIT buildings',
 				colour = 0xE00303
 				)
-			building_embed.add_field(name='Melbourne Campus', value=melbourne_buildings)
-			building_embed.add_field(name='Bundoora Campus', value=bundoora_buildings)
-			building_embed.add_field(name='Brunswick Campus', value=brunswick_buildings)
+			building_embed2.add_field(name='Melbourne Campus', value=melbourne_buildings)
+			building_embed2.add_field(name='Bundoora Campus', value=bundoora_buildings)
+			building_embed2.add_field(name='Brunswick Campus', value=brunswick_buildings)
 				
-			await ctx.send(embed=building_embed)
+			await ctx.send(embed=building_embed2)
 		else:
 			for building in buildings:
 				if building.startswith(arg + ','):
