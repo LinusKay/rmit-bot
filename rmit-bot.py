@@ -103,12 +103,13 @@ async def building(ctx, arg):
 				building_address = building_data[2]
 				building_campus = building_data[3]
 				parse_url = building_address.replace(' ', '+')
+				parse_map = building_campus.lower().replace(' ', '-')
 				building_embed = discord.Embed(
 					title = 'Find a building',
-					description = building_name + ', ' + building_campus,
+					description = building_name + ', ' + building_campus + '\n[About Building ' + building_num + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + ')',
 					colour = 0xE00303
 					)
-				building_embed.add_field(name='Address', value=building_address + ' [Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[About Building ' + building_num + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + ')')
+				building_embed.add_field(name='Address', value=building_address + ' [Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[Download Campus Map](https://www.rmit.edu.au/content/dam/rmit/documents/maps/pdf-maps/rmit-' + parse_map + '-map.pdf)')
 				await ctx.send(embed=building_embed)
 					
 

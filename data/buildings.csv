@@ -1,71 +1,102 @@
-building number, building name, building address, Melbourne City Campus
-1,Building 1 (Francis Ormond Building),124 La Trobe Street Melbourne, Melbourne City Campus
-2,Building 2 (School of Art),124 La Trobe Street Melbourne, Melbourne City Campus
-3,Building 3 (Kernot Building),124 La Trobe Street Melbourne, Melbourne City Campus
-4,Building 4,124 La Trobe Street Melbourne, Melbourne City Campus
-5,Building 5,124 La Trobe Street Melbourne, Melbourne City Campus
-6,Building 6,124 La Trobe Street Melbourne, Melbourne City Campus
-7,Building 7,124 La Trobe Street Melbourne, Melbourne City Campus
-8,Building 8,360 Swanston Street Melbourne, Melbourne City Campus
-9,Building 9,124 La Trobe Street Melbourne, Melbourne City Campus
-10,Building 10 (Casey Building),376-392 Swanston Street Melbourne, Melbourne City Campus
-11,Building 11 (Old Melbourne Gaol),377 Russell Street Melbourne, Melbourne City Campus
-12,Building 12 (Gillespie Building),402 Swanston Street Melbourne, Melbourne City Campus
-13,Building 13 (Emily McPherson),405 Russell Street Melbourne, Melbourne City Campus
-14,Building 14 (Percival Jackson Building),414-418 Swanston Street Melbourne, Melbourne City Campus
-15,Building 15,124 La Trobe Street Melbourne , Melbourne City Campus
-16,Building 16 (Storey Hall), 336–348 Swanston Street Melbourne , Melbourne City Campus
-18,Building 18,345–355 Russell Street Melbourne, Melbourne City Campus
-19,Building 19 (Former City Watch House),345–355 Russell Street Melbourne, Melbourne City Campus
-20,Building 20 (Former Magistrates’ Court),325–343 Russell Street Melbourne, Melbourne City Campus
-21,Building 21,124 La Trobe Street Melbourne, Melbourne City Campus
-22,Building 22,330–334 Swanston Street Melbourne, Melbourne City Campus
-23,Building 23,330–334 Swanston Street Melbourne, Melbourne City Campus
-24,Building 24 (Foresters Hall),124 La Trobe Street Melbourne, Melbourne City Campus
-28,Building 28,124 La Trobe Street Melbourne , Melbourne City Campus
-37,Building 37,411 Swanston Street Melbourne , Melbourne City Campus
-38,Building 38,330-344 Swanston Street Melbourne, Melbourne City Campus
-39,Building 39 (Gateway House),459-469 Swanston Street Melbourne, Melbourne City Campus
-42,Building 42,36-40 Cardigan Street Carlton, Melbourne City Campus
-43,Building 43 (Mary's Terrace),54 Cardigan Street Carlton, Melbourne City Campus
-44,Building 44,15 Lygon Street Carlton, Melbourne City Campus
-45,Building 45,33 Lygon Street Carlton, Melbourne City Campus
-46,Building 46,11 Lygon Street Carlton, Melbourne City Campus
-47,Building 47,8 Orr Street Carlton, Melbourne City Campus
-49,Building 49,67 Franklin Street Melbourne, Melbourne City Campus
-50,Building 50,11-15 Orr Street Carlton , Melbourne City Campus
-51,Building 51 (Frederick Campbell Building),80-92 Victoria Street Carlton, Melbourne City Campus
-52,Building 52,16 Cardigan Street Carlton, Melbourne City Campus
-53,Building 53,18 Cardigan Street Carlton, Melbourne City Campus
-55,Building 55 (George Thompson Building),58 Cardigan Street Carlton , Melbourne City Campus
-56,Building 56 (Ronald R MacKay Building),115 Queensberry Street Carlton , Melbourne City Campus
-57,Building 57 (Edward Jackson Building),53 Lygon Street Carlton , Melbourne City Campus
-66,Building 66,15-21 Earl Street Carlton , Melbourne City Campus
-69,Building 69 (Mary's Terrace),50 Cardigan Street Carlton , Melbourne City Campus
-70,Building 70 (Sydney Manefield Building),39-49 Cardigan Street Carlton, Melbourne City Campus
-71,Building 71,42 Cardigan Street Carlton, Melbourne City Campus
-73,Building 73,15 Orr Street Carlton , Melbourne City Campus
-74,Building 74 (Mary’s Terrace),52 Cardigan Street Carlton , Melbourne City Campus
-75,Building 75,20 Cardigan Street Carlton , Melbourne City Campus
-76,Building 76 (Mary’s Terrace)56 Cardigan Street Carlton, Melbourne City Campus
-78,Building 78,26-30 Cardigan Street Carlton , Melbourne City Campus
-80,Building 80 (Swanston Academic Building),445 Swanston Street Melbourne , Melbourne City Campus
-81,Building 81 (Oxford Scholar Hotel),427 Swanston Street Melbourne , Melbourne City Campus
-82,Building 82,22-46 A'Beckett Street Melbourne, Melbourne City Campus
-88,Building 88,440 Elizabeth Street Melbourne , Melbourne City Campus
-89,Building 89,24 Cardigan Street Carlton, Melbourne City Campus
-91,Building 91,110 Victoria Street Carlton, Melbourne City Campus
-93,Building 93,22 Cardigan Street Carlton, Melbourne City Campus
-94,Building 94,23-27 Cardigan Street Carlton , Melbourne City Campus
-95,Building 95,24-26 Earl Street Carlton , Melbourne City Campus
-96,Building 96,17-25 Lygon Street Carlton , Melbourne City Campus
-97,Building 97,106-108 Victoria Street Carlton, Melbourne City Campus
-98,Building 98,102-104 Victoria Street Carlton , Melbourne City Campus
-100,Building 100 (Design Hub),Victoria Street & Swanston Street Melbourne, Melbourne City Campus
-101,Building 101,171 La Trobe Street Melbourne, Melbourne City Campus
-105,Building 105,501 Swanston Street Melbourne, Melbourne City Campus
-107,Building 107,180 Lonsdale Street Melbourne, Melbourne City Campus
-108,Building 108 (The Tivoli),235-251 Bourke Street Melbourne , Melbourne City Campus
-113,Building 113 (The Capitol),113 Swanston Street Melbourne , Melbourne City Campus
-150,Building 150 (William Angliss),555 La Trobe Street Melbourne , Melbourne City Campus
+building number, building name, building address,Melbourne City Campus
+1,Building 1 (Francis Ormond Building),124 La Trobe Street Melbourne,Melbourne City Campus
+2,Building 2 (School of Art),124 La Trobe Street Melbourne,Melbourne City Campus
+3,Building 3 (Kernot Building),124 La Trobe Street Melbourne,Melbourne City Campus
+4,Building 4,124 La Trobe Street Melbourne,Melbourne City Campus
+5,Building 5,124 La Trobe Street Melbourne,Melbourne City Campus
+6,Building 6,124 La Trobe Street Melbourne,Melbourne City Campus
+7,Building 7,124 La Trobe Street Melbourne,Melbourne City Campus
+8,Building 8,360 Swanston Street Melbourne,Melbourne City Campus
+9,Building 9,124 La Trobe Street Melbourne,Melbourne City Campus
+10,Building 10 (Casey Building),376-392 Swanston Street Melbourne,Melbourne City Campus
+11,Building 11 (Old Melbourne Gaol),377 Russell Street Melbourne,Melbourne City Campus
+12,Building 12 (Gillespie Building),402 Swanston Street Melbourne,Melbourne City Campus
+13,Building 13 (Emily McPherson),405 Russell Street Melbourne,Melbourne City Campus
+14,Building 14 (Percival Jackson Building),414-418 Swanston Street Melbourne,Melbourne City Campus
+15,Building 15,124 La Trobe Street Melbourne,Melbourne City Campus
+16,Building 16 (Storey Hall), 336–348 Swanston Street Melbourne,Melbourne City Campus
+18,Building 18,345–355 Russell Street Melbourne,Melbourne City Campus
+19,Building 19 (Former City Watch House),345–355 Russell Street Melbourne,Melbourne City Campus
+20,Building 20 (Former Magistrates’ Court),325–343 Russell Street Melbourne,Melbourne City Campus
+21,Building 21,124 La Trobe Street Melbourne,Melbourne City Campus
+22,Building 22,330–334 Swanston Street Melbourne,Melbourne City Campus
+23,Building 23,330–334 Swanston Street Melbourne,Melbourne City Campus
+24,Building 24 (Foresters Hall),124 La Trobe Street Melbourne,Melbourne City Campus
+28,Building 28,124 La Trobe Street Melbourne,Melbourne City Campus
+37,Building 37,411 Swanston Street Melbourne,Melbourne City Campus
+38,Building 38,330-344 Swanston Street Melbourne,Melbourne City Campus
+39,Building 39 (Gateway House),459-469 Swanston Street Melbourne,Melbourne City Campus
+42,Building 42,36-40 Cardigan Street Carlton,Melbourne City Campus
+43,Building 43 (Mary's Terrace),54 Cardigan Street Carlton,Melbourne City Campus
+44,Building 44,15 Lygon Street Carlton,Melbourne City Campus
+45,Building 45,33 Lygon Street Carlton,Melbourne City Campus
+46,Building 46,11 Lygon Street Carlton,Melbourne City Campus
+47,Building 47,8 Orr Street Carlton,Melbourne City Campus
+49,Building 49,67 Franklin Street Melbourne,Melbourne City Campus
+50,Building 50,11-15 Orr Street Carlton,Melbourne City Campus
+51,Building 51 (Frederick Campbell Building),80-92 Victoria Street Carlton,Melbourne City Campus
+52,Building 52,16 Cardigan Street Carlton,Melbourne City Campus
+53,Building 53,18 Cardigan Street Carlton,Melbourne City Campus
+55,Building 55 (George Thompson Building),58 Cardigan Street Carlton,Melbourne City Campus
+56,Building 56 (Ronald R MacKay Building),115 Queensberry Street Carlton,Melbourne City Campus
+57,Building 57 (Edward Jackson Building),53 Lygon Street Carlton,Melbourne City Campus
+66,Building 66,15-21 Earl Street Carlton,Melbourne City Campus
+69,Building 69 (Mary's Terrace),50 Cardigan Street Carlton,Melbourne City Campus
+70,Building 70 (Sydney Manefield Building),39-49 Cardigan Street Carlton,Melbourne City Campus
+71,Building 71,42 Cardigan Street Carlton,Melbourne City Campus
+73,Building 73,15 Orr Street Carlton,Melbourne City Campus
+74,Building 74 (Mary’s Terrace),52 Cardigan Street Carlton,Melbourne City Campus
+75,Building 75,20 Cardigan Street Carlton,Melbourne City Campus
+76,Building 76 (Mary’s Terrace)56 Cardigan Street Carlton,Melbourne City Campus
+78,Building 78,26-30 Cardigan Street Carlton,Melbourne City Campus
+80,Building 80 (Swanston Academic Building),445 Swanston Street Melbourne,Melbourne City Campus
+81,Building 81 (Oxford Scholar Hotel),427 Swanston Street Melbourne,Melbourne City Campus
+82,Building 82,22-46 A'Beckett Street Melbourne,Melbourne City Campus
+88,Building 88,440 Elizabeth Street Melbourne,Melbourne City Campus
+89,Building 89,24 Cardigan Street Carlton,Melbourne City Campus
+91,Building 91,110 Victoria Street Carlton,Melbourne City Campus
+93,Building 93,22 Cardigan Street Carlton,Melbourne City Campus
+94,Building 94,23-27 Cardigan Street Carlton,Melbourne City Campus
+95,Building 95,24-26 Earl Street Carlton,Melbourne City Campus
+96,Building 96,17-25 Lygon Street Carlton,Melbourne City Campus
+97,Building 97,106-108 Victoria Street Carlton,Melbourne City Campus
+98,Building 98,102-104 Victoria Street Carlton,Melbourne City Campus
+100,Building 100 (Design Hub),Victoria Street & Swanston Street Melbourne,Melbourne City Campus
+101,Building 101,171 La Trobe Street Melbourne,Melbourne City Campus
+105,Building 105,501 Swanston Street Melbourne,Melbourne City Campus
+107,Building 107,180 Lonsdale Street Melbourne,Melbourne City Campus
+108,Building 108 (The Tivoli),235-251 Bourke Street Melbourne,Melbourne City Campus
+113,Building 113 (The Capitol),113 Swanston Street Melbourne,Melbourne City Campus
+150,Building 150 (William Angliss),555 La Trobe Street Melbourne,Melbourne City Campus
 154,Building 154 (Dental Hospital),720 Swanston Street Carlton
+201,Building 201 (John R Siddons Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+202,Building 202 (John W Ross Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+203,Building 203 (Robert J Magee Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+204,Building 204,Janefield Dr and Plenty Rd Bundoora,Bundoora Campus
+205,Building 205,Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+206,Building 206,Plenty Rd & Janefield Dr Bundoora,Bundoora Campus
+207,Building 207,Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+208,Building 208 (Bundoora Child Care Centre),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+209,Building 209 (Psychology Clinic),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+210,Building 210 (Geoffrey P Hayes Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+211,Building 211 (Magee Annexe),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+213,Building 213 (Chiropractic Clinic),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+214,Building 214,Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+215,Building 215 (Ross Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+217,Building 217 (EPIC Centre),Janefield Dr and Plenty Rd Bundoora,Bundoora Campus
+218,Building 218 (Caretakers Cottage),Janefield Dr and Plenty Rd Bundoora,Bundoora Campus
+220,Building 220 (Leo Foster Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+222,Building 222 (Multi Level Car Park),Janefield Dr and Plenty Rd Bundoora,Bundoora Campus
+223,Building 223,Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+224,Building 224 (Lecture Theatre),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+230,Building 230 (Gardeners Compound),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+239,Building 239 (Garage),Janefield Dr and Plenty Rd Bundoora,Bundoora Campus
+251,Building 251,264 Plenty Rd Mill Park,Bundoora Campus
+252,Building 252,264 Plenty Rd Mill Park,Bundoora Campus
+253,Building 253,264 Plenty Rd Mill Park,Bundoora Campus
+254,Building 254,264 Plenty Rd Mill Park,Bundoora Campus
+255,Building 255,264 Plenty Rd Mill Park,Bundoora Campus
+256,Building 256 (Bundoora East Gate House),264 Plenty Rd Mill Park,Bundoora Campus
+257,Building 257 (Wind Tunnel),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+258,Building 258 (Renewable Energy Building),Janefield Dr & Plenty Rd Bundoora,Bundoora Campus
+300,Building 300,30 Janefield Dr Bundoora
