@@ -94,7 +94,7 @@ async def linkme(ctx, *, arg):
 @bot.command()
 async def building(ctx, arg):
 	with open('data/buildings.csv') as f:
-		buildings = f.readlines()
+		buildings = f.read().splitlines()
 		for building in buildings:
 			if building.startswith(arg + ','):
 				building_data = building.split(',')
