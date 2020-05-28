@@ -110,9 +110,9 @@ async def links(ctx, *, arg):
 		colour = 0xE00303
 		)
 	await ctx.send('3')
-	if field_value_1 != ''
+	if field_value_1 != '':
 		links_embed.add_field(name='Link', value=field_value_1)
-	if field_value_2 != ''
+	if field_value_2 != '':
 		links_embed.add_field(name='Link', value=field_value_2)
 	await ctx.send(embed=links_embed)
 
