@@ -104,7 +104,7 @@ async def building(ctx, arg=None):
 				building_data = building.split(',')
 				building_name = building_data[1]
 				building_campus = building_data[3]
-				await ctx.send(building_campus)
+				await ctx.send(building_name + ', ' + building_campus)
 				if building_campus == 'Melbourne City Campus':
 					melbourne_buildings = melbourne_buildings + building_name + ', '
 					
