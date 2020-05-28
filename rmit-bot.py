@@ -99,6 +99,7 @@ async def building(ctx, arg=None):
 			melbourne_buildings = ''
 			bundoora_buildings = ''
 			brunswick_buildings = ''
+			await ctx.send('1')
 			for building in buildings:
 				building_data = building.split(',')
 				building_name = building_data[1]
@@ -109,9 +110,11 @@ async def building(ctx, arg=None):
 					bundoora_buildings = bundoora_buildings + building_name + ', '
 				elif building_campus == 'Brunswick Campus':
 					brunswick_buildings = brunswick_buildings + building_name + ', '
+			await ctx.send('2')
 			await ctx.send(melbourne_buildings)
 			await ctx.send(bundoora_buildings)
 			await ctx.send(brunswick_buildings)
+			await ctx.send('3')
 			building_embed2 = discord.Embed(
 				title = 'Find a building',
 				description = 'All RMIT buildings',
