@@ -89,10 +89,33 @@ async def archivecourse(ctx, cat_id):
 			await category.delete()
 
 @bot.command(aliases=['link'])
-async def linkme(ctx, *, arg):
-	if arg.lower() == 'student support':
-		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
+async def links(ctx, *, arg):
+	arg = arg.lower()
+	if arg == 'student support':
+		description = 'Student Support'
+		field_value = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
+	elif arg == 'quick links' or arg == 'quicklinks':
+		description = 'Quick Links'
+		field_value = '''[myRMIT](https://my.rmit.edu.au/portal/)
+[RMIT Creds](https://www.rmit.edu.au/creds)
+[Canvas](https://rmit.instructure.com/)
+[Library](https://www.rmit.edu.au/library)
+[Study help](https://www.rmit.edu.au/students/study-support)
+[myDesktop](https://mydesktop.rmit.edu.au/)
+[Enrolment Online](https://sams.rmit.edu.au/)
+[Blackboard (LMS)](https://lms.rmit.edu.au/)
+[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)
+[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)
+[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'''
 		
+	links_embed = discord.Embed(
+		title = 'RMIT Links',
+		description = description,
+		colour = 0xE00303
+		)
+	links_embed.add_field(name=field_name, value=field_value)
+	await ctx.send(embed=links_embed)
+
 @bot.command(aliases=['findbuilding'])
 async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
@@ -128,7 +151,7 @@ async def building(ctx, arg=None):
 					parse_url = building_address.replace(' ', '+')
 					parse_map = building_campus.lower().replace(' ', '-')
 					building_embed = discord.Embed(
-						title = 'Find a building',
+						title = 'Find an RMIT building',
 						description = '[' + building_name + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + '), ' + building_campus,
 						colour = 0xE00303
 						)
