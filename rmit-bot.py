@@ -96,6 +96,7 @@ async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
 		if arg is None:
+			await ctx.send('aa')
 			all_buildings = ""
 			for building in buildings:
 				building_data = building.split(',')
