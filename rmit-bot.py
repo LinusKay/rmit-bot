@@ -107,7 +107,14 @@ async def building(ctx, arg):
 				building_address = building_data[2]
 				building_campus = building_data[3]
 				await ctx.send(str(building_num) + building_name + building_address + building_campus)
-	
+				building_embed = discord.Embed(
+					title = 'Find a building',
+					description = building_name,
+					colour = 0xE00303
+					)
+				building_embed.add_field(name='Address', value=building_address)
+				await ctx.send(embed=building_embed)
+					
 
 @bot.command()
 async def help(ctx):
