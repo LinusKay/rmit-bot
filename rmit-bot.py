@@ -88,32 +88,42 @@ async def archivecourse(ctx, cat_id):
 				await channel.edit(category=archive_category)
 			await category.delete()
 
-@bot.command(aliases=['link'])
-async def links(ctx, *, arg):
-	arg = arg.lower()
-	field_value_1 = ''
-	field_value_2 = ''
-	footer = 'All links sourced from RMIT official website https://rmit.edu.au/'
-	if arg == 'student support':
-		description = 'Student Support'
-		field_value_1 = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
-	elif arg == 'quick links' or arg == 'quicklinks':
-		link_title = 'Quick Links'
-		description = 'Here are the systems and resources you use often.'
-		field_value_1 = '[myRMIT](https://my.rmit.edu.au/portal/)\n[RMIT Creds](https://www.rmit.edu.au/creds)\n[Canvas](https://rmit.instructure.com/)\n[Library](https://www.rmit.edu.au/library)\n[Study help](https://www.rmit.edu.au/students/study-support)\n[myDesktop](https://mydesktop.rmit.edu.au/)'
-		field_value_2 = '[Enrolment Online](https://sams.rmit.edu.au/)\n[Blackboard (LMS)](https://lms.rmit.edu.au/)\n[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)\n[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)\n[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'
-		
-	links_embed = discord.Embed(
-		title = 'RMIT Links',
-		description = link_title + ' - ' + description,
-		colour = 0xE00303
-		)
-	if field_value_1 != '':
-		links_embed.add_field(name=link_title, value=field_value_1)
-	if field_value_2 != '':
-		links_embed.add_field(name=link_title, value=field_value_2)
-	links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
-	await ctx.send(embed=links_embed)
+@bot.command(aliases=['linkme'])
+async def links(ctx, *, arg=None):
+	
+	with open('data/links.csv') as f:
+		links = f.read().splitlines()
+		if arg is None:
+			links = ''
+			for link in links:
+				link_data = link.split(',')
+				links = links + link_data[0]
+			await ctx.send(links)
+		else:
+			for link in links:
+				link_data = link.split(',')
+				link_title = link_data[0]
+				link_description = link_data[1]
+				if len(link_data) > 2:
+					link_text_1 = link_data[2]
+				else:
+					link_text_1 = ''
+				if len(link_data) > 3:
+					link_text_2 = link_data[3]
+				else:
+					link_text_2 = ''
+					
+			links_embed = discord.Embed(
+				title = 'RMIT Links',
+				description = link_title + ' - ' + link_description,
+				colour = 0xE00303
+				)
+			if link_text_1 != '':
+				links_embed.add_field(name=link_title, value=link_text_1)
+			if link_text_2 != '':
+				links_embed.add_field(name=link_title, value=link_text_2)
+			links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
+			await ctx.send(embed=links_embed)
 
 @bot.command(aliases=['findbuilding'])
 async def building(ctx, arg=None):
