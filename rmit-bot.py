@@ -115,12 +115,14 @@ async def links(ctx, *, arg=None):
 						link_text_2 = link_data[3]
 					else:
 						link_text_2 = ''
+					await ctx.send('3')
 						
 					links_embed = discord.Embed(
 						title = 'RMIT Links',
 						description = link_title + ' - ' + link_description,
 						colour = 0xE00303
 						)
+					await ctx.send('4')
 					if link_text_1 != '':
 						links_embed.add_field(name=link_title, value=link_text_1)
 					if link_text_2 != '':
