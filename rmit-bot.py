@@ -104,6 +104,8 @@ async def links(ctx, *, arg=None):
 				await ctx.send('1')
 				link_data = link.split(',')
 				link_title = link_data[0]
+				link_text_1 = ''
+				link_text_2 = ''
 				if arg.lower() == link_title.lower():
 					await ctx.send('2')
 					link_description = link_data[1]
