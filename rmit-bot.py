@@ -111,7 +111,7 @@ async def links(ctx, *, arg):
 		links_embed.add_field(name='Link', value=field_value_1)
 	if field_value_2 != '':
 		links_embed.add_field(name='Link', value=field_value_2)
-	links_embed.set_footer(text=footer, icon_url='https://www.rmit.edu.au/etc/designs/rmit-student-portal/clientlib/css/images/rmit_logo_blue.svg')
+	links_embed.set_footer(text=footer, icon_url='https://www.rmit.edu.au/content/dam/rmit/rmit-images/staff-site/home-page/RMIT_POS3.png')
 	await ctx.send(embed=links_embed)
 
 @bot.command(aliases=['findbuilding'])
