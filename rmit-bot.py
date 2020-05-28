@@ -103,7 +103,8 @@ async def links(ctx, *, arg=None):
 				description = 'All available link shortcuts. type .rmit links <link name>',
 				colour = 0xE00303
 				)
-			links_embed.add_field(name='Links', value=all_links)links_embed.set_footer(text='All links sourced from RMIT official website https://rmit.edu.au', icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
+			links_embed.add_field(name='Links', value=all_links)
+			links_embed.set_footer(text='All links sourced from RMIT official website https://rmit.edu.au', icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
 			await ctx.send(embed=links_embed)
 			
 		else:
