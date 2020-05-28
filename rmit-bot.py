@@ -101,39 +101,34 @@ async def links(ctx, *, arg=None):
 			await ctx.send(all_links)
 		else:
 			for link in links:
-				await ctx.send('1')
 				link_data = link.split(',')
 				link_title = link_data[0]
-				link_text_1 = None
-				link_text_2 = None
+				link_text_1 = ''
+				link_text_2 = ''
 				if arg.lower() == link_title.lower():
-					await ctx.send('2')
+
 					link_description = link_data[1]
 					if len(link_data) > 2:
 						link_text_1 = link_data[2]
 					else:
-						link_text_1 = None
+						link_text_1 = ''
 					if len(link_data) > 3:
 						link_text_2 = link_data[3]
 					else:
-						link_text_2 = None
-					await ctx.send('3')
-						
+						link_text_2 = ''
+
 					links_embed = discord.Embed(
 						title = 'RMIT Links',
 						description = link_title + ' - ' + link_description,
 						colour = 0xE00303
 						)
-					await ctx.send('4')
-					if link_text_1 is not None:
+
+					if link_text_1 != '':
 						links_embed.add_field(name=link_title, value=link_text_1)
-					if link_text_2 is not None:
+					if link_text_2 !- '':
 						links_embed.add_field(name=link_title, value=link_text_2)
-					await ctx.send('5')
 					links_embed.set_footer(text='All links sourced from RMIT official website https://rmit.edu.au', icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
-					await ctx.send('6')
 					await ctx.send(embed=links_embed)
-					await ctx.send('7')
 
 @bot.command(aliases=['findbuilding'])
 async def building(ctx, arg=None):
