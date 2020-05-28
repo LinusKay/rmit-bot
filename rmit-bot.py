@@ -106,7 +106,7 @@ async def building(ctx, arg):
 				building_name = building_data[1]
 				building_address = building_data[2]
 				building_campus = building_data[3]
-				await ctx.send(str(building_num), building_name, building_address, building_campus)
+				await ctx.send(str(building_num) + building_name + building_address + building_campus)
 	
 
 @bot.command()
