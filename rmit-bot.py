@@ -94,11 +94,11 @@ async def links(ctx, *, arg=None):
 	with open('data/links.csv') as f:
 		links = f.read().splitlines()
 		if arg is None:
-			links = ''
+			all_links = ''
 			for link in links:
 				link_data = link.split(',')
-				links = links + link_data[0]
-			await ctx.send(links)
+				all_links = all_links + link_data[0]
+			await ctx.send(all_links)
 		else:
 			for link in links:
 				link_data = link.split(',')
