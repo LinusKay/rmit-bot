@@ -104,19 +104,19 @@ async def links(ctx, *, arg=None):
 				await ctx.send('1')
 				link_data = link.split(',')
 				link_title = link_data[0]
-				link_text_1 = ''
-				link_text_2 = ''
+				link_text_1 = None
+				link_text_2 = None
 				if arg.lower() == link_title.lower():
 					await ctx.send('2')
 					link_description = link_data[1]
 					if len(link_data) > 2:
 						link_text_1 = link_data[2]
 					else:
-						link_text_1 = ''
+						link_text_1 = None
 					if len(link_data) > 3:
 						link_text_2 = link_data[3]
 					else:
-						link_text_2 = ''
+						link_text_2 = None
 					await ctx.send('3')
 						
 					links_embed = discord.Embed(
@@ -125,10 +125,11 @@ async def links(ctx, *, arg=None):
 						colour = 0xE00303
 						)
 					await ctx.send('4')
-					if link_text_1 != '':
+					if link_text_1 is not None:
 						links_embed.add_field(name=link_title, value=link_text_1)
-					if link_text_2 != '':
+					if link_text_2 is not None:
 						links_embed.add_field(name=link_title, value=link_text_2)
+					await ctx.send('5')
 					links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
 					await ctx.send(embed=links_embed)
 
