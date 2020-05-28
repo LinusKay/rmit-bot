@@ -176,7 +176,7 @@ async def building(ctx, arg=None):
 					building_embed.set_image(url='https://maps.googleapis.com/maps/api/staticmap?center=' + parse_url + '&markers=' + parse_url + '&zoom=16&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk')
 					await ctx.send(embed=building_embed)
 					
-@bot.command():
+@bot.command()
 async def ping(ctx):
 	await ctx.send(ctx.created_at)
 	
