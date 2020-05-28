@@ -109,11 +109,11 @@ async def links(ctx, *, arg=None):
 
 					link_description = link_data[1]
 					if len(link_data) > 2:
-						link_text_1 = link_data[2].decode("unicode_escape")
+						link_text_1 = bytes(link_data[2], "utf-8").decode("unicode_escape")
 					else:
 						link_text_1 = ''
 					if len(link_data) > 3:
-						link_text_2 = link_data[3].decode("unicode_escape")
+						link_text_2 = bytes(link_data[3], "utf-8").decode("unicode_escape")
 					else:
 						link_text_2 = ''
 
