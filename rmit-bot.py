@@ -102,7 +102,7 @@ async def building(ctx, arg=None):
 				building_data = building.split(',')
 				building_name = building_data[1]
 				await ctx.send(building_name)
-				if len(all_buildings) !> 1999
+				if len(all_buildings) < 1900:
 					all_buildings = all_buildings + building_name + '\n'
 			await ctx.send(all_buildings)
 		else:
