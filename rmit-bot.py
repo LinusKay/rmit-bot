@@ -180,11 +180,11 @@ async def building(ctx, arg=None):
 async def ping(ctx):
 	await ctx.send(f'Pong! {bot.latency}')
 	
-@bot.command()
+@bot.command(aliases=['about'])
 async def help(ctx):
 	help_embed = discord.Embed(
 		title = 'RMIT Bot Commands',
-		description = 'Find out what I can do!',
+		description = 'Find out what I can do! This bot is an on-going project, and I am always taking suggestions. Please do not hesitate to contact me if you have any suggestions or questions in regards to it @libus#5949.',
 		colour = 0xE00303
 		)
 	help_embed.add_field(name='.rmit findbuilding [building number]', value='Find a specific RMIT building. Not including a parameter will display all buildings. Also try: findbuilding/building', inline=False)
