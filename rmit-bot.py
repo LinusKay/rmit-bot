@@ -95,22 +95,30 @@ async def linkme(ctx, *, arg):
 async def building(ctx, arg):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
-		for building in buildings:
-			if building.startswith(arg + ','):
+		if arg == None:
+			all_buildings = ""
+			for building in buildings:
 				building_data = building.split(',')
-				building_num = building_data[0]
 				building_name = building_data[1]
-				building_address = building_data[2]
-				building_campus = building_data[3]
-				parse_url = building_address.replace(' ', '+')
-				parse_map = building_campus.lower().replace(' ', '-')
-				building_embed = discord.Embed(
-					title = 'Find a building',
-					description = '[' + building_name + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + '), ' + building_campus,
-					colour = 0xE00303
-					)
-				building_embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[Download Campus Map](https://www.rmit.edu.au/content/dam/rmit/documents/maps/pdf-maps/rmit-' + parse_map + '-map.pdf)')
-				await ctx.send(embed=building_embed)
+				all_buildings = all_buildings + building_name + '\n'
+			await ctx.send(all_buildings)
+		else:
+			for building in buildings:
+				if building.startswith(arg + ','):
+					building_data = building.split(',')
+					building_num = building_data[0]
+					building_name = building_data[1]
+					building_address = building_data[2]
+					building_campus = building_data[3]
+					parse_url = building_address.replace(' ', '+')
+					parse_map = building_campus.lower().replace(' ', '-')
+					building_embed = discord.Embed(
+						title = 'Find a building',
+						description = '[' + building_name + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + '), ' + building_campus,
+						colour = 0xE00303
+						)
+					building_embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[Download Campus Map](https://www.rmit.edu.au/content/dam/rmit/documents/maps/pdf-maps/rmit-' + parse_map + '-map.pdf)')
+					await ctx.send(embed=building_embed)
 					
 
 @bot.command()
@@ -120,10 +128,10 @@ async def help(ctx):
 		description = 'Find out what I can do!',
 		colour = 0xE00303
 		)
-	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role. alias: createcourse/addcourse', inline=False)
-	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too. alias: deletecourse/removecourse', inline=False)
+	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role. Also try: createcourse/addcourse', inline=False)
+	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too. Also try: deletecourse/removecourse', inline=False)
 	help_embed.add_field(name='.rmit archivecourse <category id>', value='Archive a course using category ID. Will place in private Archives category and keep role.', inline=False)
-	help_embed.add_field(name='.rmit findbuilding <building number>', value='Find a specific RMIT building. alias: findbuilding/building', inline=False)
+	help_embed.add_field(name='.rmit findbuilding <building number>', value='Find a specific RMIT building. Also try: findbuilding/building', inline=False)
 	help_embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=help_embed)
 
