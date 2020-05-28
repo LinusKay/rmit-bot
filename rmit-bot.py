@@ -178,7 +178,7 @@ async def building(ctx, arg=None):
 					
 @bot.command()
 async def ping(ctx):
-	await ctx.send(ctx.created_at)
+	await ctx.send(str(ctx.created_at))
 	
 @bot.command()
 async def help(ctx):
