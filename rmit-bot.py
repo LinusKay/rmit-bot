@@ -92,13 +92,16 @@ async def archivecourse(ctx, cat_id):
 async def links(ctx, *, arg):
 	arg = arg.lower()
 	await ctx.send('1')
+	field_value_1 = ''
+	field_value_2 = ''
 	if arg == 'student support':
 		description = 'Student Support'
-		field_value = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
+		field_value_1 = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
 		await ctx.send('2')
 	elif arg == 'quick links' or arg == 'quicklinks':
 		description = 'Quick Links'
-		field_value = '[myRMIT](https://my.rmit.edu.au/portal/)\n[RMIT Creds](https://www.rmit.edu.au/creds)\n[Canvas](https://rmit.instructure.com/)\n[Library](https://www.rmit.edu.au/library)\n[Study help](https://www.rmit.edu.au/students/study-support)\n[myDesktop](https://mydesktop.rmit.edu.au/)\n[Enrolment Online](https://sams.rmit.edu.au/)\n[Blackboard (LMS)](https://lms.rmit.edu.au/)\n[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)\n[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)\n[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'
+		field_value_1 = '[myRMIT](https://my.rmit.edu.au/portal/)\n[RMIT Creds](https://www.rmit.edu.au/creds)\n[Canvas](https://rmit.instructure.com/)\n[Library](https://www.rmit.edu.au/library)\n[Study help](https://www.rmit.edu.au/students/study-support)\n[myDesktop](https://mydesktop.rmit.edu.au/)'
+		field_value_2 = '[Enrolment Online](https://sams.rmit.edu.au/)\n[Blackboard (LMS)](https://lms.rmit.edu.au/)\n[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)\n[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)\n[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'
 		await ctx.send('2')
 		
 	links_embed = discord.Embed(
@@ -107,7 +110,10 @@ async def links(ctx, *, arg):
 		colour = 0xE00303
 		)
 	await ctx.send('3')
-	links_embed.add_field(name='Link', value=field_value)
+	if field_value_1 != ''
+		links_embed.add_field(name='Link', value=field_value_1)
+	if field_value_2 != ''
+		links_embed.add_field(name='Link', value=field_value_2)
 	await ctx.send(embed=links_embed)
 
 @bot.command(aliases=['findbuilding'])
