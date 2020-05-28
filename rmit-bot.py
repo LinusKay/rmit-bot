@@ -97,7 +97,6 @@ async def links(ctx, *, arg):
 		field_value = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
 		await ctx.send('2')
 	elif arg == 'quick links' or arg == 'quicklinks':
-		field_name
 		description = 'Quick Links'
 		field_value = '[myRMIT](https://my.rmit.edu.au/portal/)\n[RMIT Creds](https://www.rmit.edu.au/creds)\n[Canvas](https://rmit.instructure.com/)\n[Library](https://www.rmit.edu.au/library)\n[Study help](https://www.rmit.edu.au/students/study-support)\n[myDesktop](https://mydesktop.rmit.edu.au/)\n[Enrolment Online](https://sams.rmit.edu.au/)\n[Blackboard (LMS)](https://lms.rmit.edu.au/)\n[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)\n[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)\n[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'
 		await ctx.send('2')
