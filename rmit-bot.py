@@ -91,7 +91,7 @@ async def linkme(ctx, *, arg):
 	if arg.lower() == 'student support':
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 		
-@bot.command()
+@bot.command(aliases=['build', 'findbuilding', 'findbuild'])
 async def building(ctx, arg):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
