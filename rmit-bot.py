@@ -109,11 +109,11 @@ async def links(ctx, *, arg=None):
 
 					link_description = link_data[1]
 					if len(link_data) > 2:
-						link_text_1 = link_data[2].decode('string_escape')
+						link_text_1 = link_data[2]
 					else:
 						link_text_1 = ''
 					if len(link_data) > 3:
-						link_text_2 = link_data[3].decode('string_escape')
+						link_text_2 = link_data[3]
 					else:
 						link_text_2 = ''
 
@@ -124,9 +124,9 @@ async def links(ctx, *, arg=None):
 						)
 
 					if link_text_1 != '':
-						links_embed.add_field(name=link_title, value=link_text_1)
+						links_embed.add_field(name=link_title, value=link_text_1.decode('string_escape'))
 					if link_text_2 != '':
-						links_embed.add_field(name=link_title, value=strlink_text_2)
+						links_embed.add_field(name=link_title, value=strlink_text_2.decode('string_escape'))
 					links_embed.set_footer(text='All links sourced from RMIT official website https://rmit.edu.au', icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
 					await ctx.send(embed=links_embed)
 
