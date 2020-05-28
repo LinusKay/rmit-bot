@@ -4,8 +4,6 @@ from discord.ext.commands import has_permissions, MissingPermissions
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 
-https://maps.googleapis.com/maps/api/staticmap?center=124+La+Trobe+Street+Melbourne&zoom=14&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk
-
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
 
