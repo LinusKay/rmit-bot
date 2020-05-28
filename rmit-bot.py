@@ -112,17 +112,10 @@ async def building(ctx, arg=None):
 					
 				elif building_campus == 'Brunswick Campus':
 					brunswick_buildings = brunswick_buildings + building_name + ', '
-
-			building_embed2 = discord.Embed(
-				title = 'Find a building',
-				description = 'All RMIT buildings',
-				colour = 0xE00303
-				)
-			building_embed2.add_field(name='Melbourne Campus', value=bundoora_buildings, inline=False)
-#			building_embed2.add_field(name='Bundoora Campus', value=bundoora_buildings, inline=False)
-#			building_embed2.add_field(name='Brunswick Campus', value=brunswick_buildings, inline=False)
 				
-			await ctx.send(embed=building_embed2)
+			await ctx.send('**Melbourne City Campus**\n' + melbourne_buildings)
+			await ctx.send('**Bundoora Campus**\n' + bundoora_buildings)
+			await ctx.send('**Brunswick Campus**\n' + brunswick_buildings)
 		else:
 			for building in buildings:
 				if building.startswith(arg + ','):
