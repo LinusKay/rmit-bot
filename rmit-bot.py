@@ -98,20 +98,21 @@ async def links(ctx, *, arg):
 		description = 'Student Support'
 		field_value_1 = 'https://www.rmit.edu.au/students/support-and-facilities/student-support'
 	elif arg == 'quick links' or arg == 'quicklinks':
-		description = 'Quick Links - Here are the systems and resources you use often.'
+		link_title = 'Quick Links'
+		description = 'Here are the systems and resources you use often.'
 		field_value_1 = '[myRMIT](https://my.rmit.edu.au/portal/)\n[RMIT Creds](https://www.rmit.edu.au/creds)\n[Canvas](https://rmit.instructure.com/)\n[Library](https://www.rmit.edu.au/library)\n[Study help](https://www.rmit.edu.au/students/study-support)\n[myDesktop](https://mydesktop.rmit.edu.au/)'
 		field_value_2 = '[Enrolment Online](https://sams.rmit.edu.au/)\n[Blackboard (LMS)](https://lms.rmit.edu.au/)\n[Student email](https://www.rmit.edu.au/students/support-and-facilities/it-services-for-students/email)\n[myTimetable](https://www.rmit.edu.au/students/student-essentials/program-and-course-information/class-timetables/access-mytimetable)\n[RMIT Connect](https://rmit.service-now.com/connect/?id=rmit_index)'
 		
 	links_embed = discord.Embed(
 		title = 'RMIT Links',
-		description = description,
+		description = link_title + ' - ' + description,
 		colour = 0xE00303
 		)
 	if field_value_1 != '':
-		links_embed.add_field(name='Link', value=field_value_1)
+		links_embed.add_field(name=link_title, value=field_value_1)
 	if field_value_2 != '':
-		links_embed.add_field(name='Link', value=field_value_2)
-	links_embed.set_footer(text=footer, icon_url='https://www.rmit.edu.au/content/dam/rmit/rmit-images/staff-site/home-page/RMIT_POS3.png')
+		links_embed.add_field(name=link_title, value=field_value_2)
+	links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
 	await ctx.send(embed=links_embed)
 
 @bot.command(aliases=['findbuilding'])
