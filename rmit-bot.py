@@ -102,12 +102,13 @@ async def building(ctx, arg):
 				building_name = building_data[1]
 				building_address = building_data[2]
 				building_campus = building_data[3]
+				parse_url = building_address.replace(' ', '+')
 				building_embed = discord.Embed(
 					title = 'Find a building',
-					description = building_name,
+					description = building_name + ', ' + building_campus,
 					colour = 0xE00303
 					)
-				building_embed.add_field(name='Address', value=building_address + ', ' + building_campus)
+				building_embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')')
 				await ctx.send(embed=building_embed)
 					
 
