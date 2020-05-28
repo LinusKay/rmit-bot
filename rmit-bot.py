@@ -103,27 +103,28 @@ async def links(ctx, *, arg=None):
 			for link in links:
 				link_data = link.split(',')
 				link_title = link_data[0]
-				link_description = link_data[1]
-				if len(link_data) > 2:
-					link_text_1 = link_data[2]
-				else:
-					link_text_1 = ''
-				if len(link_data) > 3:
-					link_text_2 = link_data[3]
-				else:
-					link_text_2 = ''
-					
-			links_embed = discord.Embed(
-				title = 'RMIT Links',
-				description = link_title + ' - ' + link_description,
-				colour = 0xE00303
-				)
-			if link_text_1 != '':
-				links_embed.add_field(name=link_title, value=link_text_1)
-			if link_text_2 != '':
-				links_embed.add_field(name=link_title, value=link_text_2)
-			links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
-			await ctx.send(embed=links_embed)
+				if arg.lower() == link_title.lower():
+					link_description = link_data[1]
+					if len(link_data) > 2:
+						link_text_1 = link_data[2]
+					else:
+						link_text_1 = ''
+					if len(link_data) > 3:
+						link_text_2 = link_data[3]
+					else:
+						link_text_2 = ''
+						
+					links_embed = discord.Embed(
+						title = 'RMIT Links',
+						description = link_title + ' - ' + link_description,
+						colour = 0xE00303
+						)
+					if link_text_1 != '':
+						links_embed.add_field(name=link_title, value=link_text_1)
+					if link_text_2 != '':
+						links_embed.add_field(name=link_title, value=link_text_2)
+					links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
+					await ctx.send(embed=links_embed)
 
 @bot.command(aliases=['findbuilding'])
 async def building(ctx, arg=None):
