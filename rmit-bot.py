@@ -118,7 +118,7 @@ async def building(ctx, arg=None):
 				description = 'All RMIT buildings',
 				colour = 0xE00303
 				)
-			building_embed2.add_field(name='Melbourne Campus', value=brunswick_buildings, inline=False)
+			building_embed2.add_field(name='Melbourne Campus', value=bundoora_buildings, inline=False)
 #			building_embed2.add_field(name='Bundoora Campus', value=bundoora_buildings, inline=False)
 #			building_embed2.add_field(name='Brunswick Campus', value=brunswick_buildings, inline=False)
 				
