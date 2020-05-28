@@ -96,7 +96,7 @@ async def building(ctx, arg):
 	with open('data/buildings.csv') as f:
 		buildings = f.readlines()
 		for building in buildings:
-			if building.startswith(arg):
+			if building.startswith(arg + ','):
 				building_data = building.split(',')
 				building_num = building_data[0]
 				building_name = building_data[1]
