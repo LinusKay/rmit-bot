@@ -108,7 +108,7 @@ async def building(ctx, arg):
 					description = building_name + ', ' + building_campus,
 					colour = 0xE00303
 					)
-				building_embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')')
+				building_embed.add_field(name='Address', value=building_address + ' [Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[About Building ' + building_num + '](https://www.rmit.edu.au/maps/melbourne-city-campus/building-' + building_num + ')')
 				await ctx.send(embed=building_embed)
 					
 
