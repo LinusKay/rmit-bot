@@ -178,7 +178,7 @@ async def building(ctx, arg=None):
 					
 @bot.command()
 async def ping(ctx):
-	await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
+	await ctx.send(f'Pong! {bot.latency}')
 	
 @bot.command()
 async def help(ctx):
