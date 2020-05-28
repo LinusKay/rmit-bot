@@ -90,6 +90,20 @@ async def archivecourse(ctx, cat_id):
 async def linkme(ctx, *, arg):
 	if arg.lower() == 'student support':
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
+		
+@bot.command()
+async def building(ctx, arg):
+	with open('data/buildings.csv') as f:
+		buildings = f.readlines()
+		for building in buildings:
+			if building.startswith(arg):
+				building_data = building.split(',')
+				building_num = building_data[0]
+				building_name = building_data[1]
+				building_address = building_data[2]
+				building_campus = building_data[3]
+				await ctx.send(str(building_num), building_name, building_address, building_campus)
+	
 
 @bot.command()
 async def help(ctx):
