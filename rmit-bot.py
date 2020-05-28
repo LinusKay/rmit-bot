@@ -101,6 +101,7 @@ async def building(ctx, arg=None):
 			for building in buildings:
 				building_data = building.split(',')
 				building_name = building_data[1]
+				await ctx.send(building_name)
 				all_buildings = all_buildings + building_name + '\n'
 			await ctx.send(all_buildings)
 		else:
