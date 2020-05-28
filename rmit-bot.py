@@ -100,7 +100,7 @@ async def links(ctx, *, arg=None):
 				all_links = all_links + link_title + '\n'
 			links_embed = discord.Embed(
 				title = 'RMIT Links',
-				description = 'All available link shortcuts',
+				description = 'All available link shortcuts. type .rmit links <link name>',
 				colour = 0xE00303
 				)
 			links_embed.add_field(name='Links', value=all_links)
@@ -185,7 +185,8 @@ async def help(ctx):
 	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role. Also try: createcourse/addcourse', inline=False)
 	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too. Also try: deletecourse/removecourse', inline=False)
 	help_embed.add_field(name='.rmit archivecourse <category id>', value='Archive a course using category ID. Will place in private Archives category and keep role.', inline=False)
-	help_embed.add_field(name='.rmit findbuilding <building number>', value='Find a specific RMIT building. Also try: findbuilding/building', inline=False)
+	help_embed.add_field(name='.rmit findbuilding [building number]', value='Find a specific RMIT building. Not including a parameter will display all buildings. Also try: findbuilding/building', inline=False)
+	help_embed.add_field(name='.rmit links [building number]', value='Browse a selection of shortcuts to RMIT services. Not including a parameter will display all available links.', inline=False)
 	help_embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=help_embed)
 
