@@ -100,7 +100,7 @@ async def building(ctx, arg):
 		await ctx.send('3')
 		for building in buildings:
 			if building.startswith(arg):
-			await ctx.send('4')
+				await ctx.send('4')
 				building_data = building.split(',')
 				building_num = building_data[0]
 				building_name = building_data[1]
