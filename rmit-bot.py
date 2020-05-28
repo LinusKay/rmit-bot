@@ -133,7 +133,7 @@ async def building(ctx, arg=None):
 						colour = 0xE00303
 						)
 					building_embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[Download Campus Map](https://www.rmit.edu.au/content/dam/rmit/documents/maps/pdf-maps/rmit-' + parse_map + '-map.pdf)')
-					building_embed.add_image(url='https://maps.googleapis.com/maps/api/staticmap?center=' + parse_url + '&zoom=14&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk')
+					building_embed.set_image(url='https://maps.googleapis.com/maps/api/staticmap?center=' + parse_url + '&zoom=14&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk')
 					await ctx.send(embed=building_embed)
 					
 
