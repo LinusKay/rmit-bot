@@ -95,7 +95,7 @@ async def linkme(ctx, *, arg):
 async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
-		if arg == None:
+		if arg is None:
 			all_buildings = ""
 			for building in buildings:
 				building_data = building.split(',')
