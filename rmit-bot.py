@@ -130,7 +130,7 @@ async def links(ctx, *, arg=None):
 					if link_text_2 is not None:
 						links_embed.add_field(name=link_title, value=link_text_2)
 					await ctx.send('5')
-					links_embed.set_footer(text=footer, icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
+					links_embed.set_footer(text='All links sourced from RMIT official website https://rmit.edu.au', icon_url='https://libus.xyz/i/0d0daddd526317b5a5c647e32c71180d/upload.png')
 					await ctx.send('6')
 					await ctx.send(embed=links_embed)
 					await ctx.send('7')
