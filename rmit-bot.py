@@ -92,6 +92,7 @@ async def linkme(ctx, *, arg):
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 		
 @bot.command(aliases=['findbuilding'])
+@has_permissions(administrator=True)
 async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
@@ -99,12 +100,10 @@ async def building(ctx, arg=None):
 			melbourne_buildings = ''
 			bundoora_buildings = ''
 			brunswick_buildings = ''
-			await ctx.send('1')
 			for building in buildings:
 				building_data = building.split(',')
 				building_name = building_data[1]
 				building_campus = building_data[3]
-				await ctx.send(building_name + ', ' + building_campus)
 				if building_campus == 'Melbourne City Campus':
 					melbourne_buildings = melbourne_buildings + building_name + ', '
 					
@@ -113,6 +112,7 @@ async def building(ctx, arg=None):
 					
 				elif building_campus == 'Brunswick Campus':
 					brunswick_buildings = brunswick_buildings + building_name + ', '
+					
 			await ctx.send('3')
 			await ctx.send(melbourne_buildings)
 			await ctx.send(bundoora_buildings)
