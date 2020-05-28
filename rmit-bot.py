@@ -16,7 +16,7 @@ async def on_member_join(member):
 	welcome_channel = bot.get_channel(684986753659961408)
 	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and join course groups!')
 
-@bot.command()
+@bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
 	args = arg.split(',')
@@ -41,7 +41,7 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 	await ctx.send('Created course `' + category.name + '`')
 
-@bot.command()
+@bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
 async def deletecourse(ctx, cat_id, delete_role=None):
 	guild = ctx.message.guild
@@ -86,12 +86,12 @@ async def archivecourse(ctx, cat_id):
 				await channel.edit(category=archive_category)
 			await category.delete()
 
-@bot.command()
+@bot.command(aliases=['link'])
 async def linkme(ctx, *, arg):
 	if arg.lower() == 'student support':
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 		
-@bot.command(aliases=['build', 'findbuilding', 'findbuild'])
+@bot.command(aliases=['findbuilding'])
 async def building(ctx, arg):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
@@ -120,9 +120,10 @@ async def help(ctx):
 		description = 'Find out what I can do!',
 		colour = 0xE00303
 		)
-	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role.', inline=False)
-	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too.', inline=False)
+	help_embed.add_field(name='.rmit createcourse <course name>, [course code]', value='Create a private course category with standard channels, and course role. alias: createcourse/addcourse', inline=False)
+	help_embed.add_field(name='.rmit deletecourse <category id> [delete role]', value='Delete a course using category ID. Second param will delete the role too. alias: deletecourse/removecourse', inline=False)
 	help_embed.add_field(name='.rmit archivecourse <category id>', value='Archive a course using category ID. Will place in private Archives category and keep role.', inline=False)
+	help_embed.add_field(name='.rmit findbuilding <building number>', value='Find a specific RMIT building. alias: findbuilding/building', inline=False)
 	help_embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=help_embed)
 
