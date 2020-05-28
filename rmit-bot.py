@@ -92,10 +92,10 @@ async def linkme(ctx, *, arg):
 		await ctx.send('Try this: https://www.rmit.edu.au/students/support-and-facilities/student-support')
 		
 @bot.command(aliases=['findbuilding'])
-async def building(ctx, arg):
+async def building(ctx, arg=None):
 	with open('data/buildings.csv') as f:
 		buildings = f.read().splitlines()
-		if arg == '':
+		if arg == None:
 			all_buildings = ""
 			for building in buildings:
 				building_data = building.split(',')
