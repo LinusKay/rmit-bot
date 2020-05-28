@@ -90,15 +90,22 @@ async def archivecourse(ctx, cat_id):
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
-	
 	with open('data/links.csv') as f:
 		links = f.read().splitlines()
 		if arg is None:
 			all_links = ''
 			for link in links:
 				link_data = link.split(',')
-				all_links = all_links + link_data[0]
-			await ctx.send(all_links)
+				link_title = link_data[0]
+				all_links = all_links + link_title + '\n'
+			links_embed = discord.Embed(
+				title = 'RMIT Links',
+				description = 'All available link shortcuts',
+				colour = 0xE00303
+				)
+			links_embed.add_field(name='Links', value=all_links)
+			await ctx.send(embed=links_embed)
+			
 		else:
 			for link in links:
 				link_data = link.split(',')
@@ -106,7 +113,6 @@ async def links(ctx, *, arg=None):
 				link_text_1 = ''
 				link_text_2 = ''
 				if arg.lower() == link_title.lower():
-
 					link_description = link_data[1]
 					if len(link_data) > 2:
 						link_text_1 = bytes(str(link_data[2]), "utf-8").decode("unicode_escape")
@@ -116,13 +122,12 @@ async def links(ctx, *, arg=None):
 						link_text_2 = bytes(str(link_data[3]), "utf-8").decode("unicode_escape")
 					else:
 						link_text_2 = ''
-
+						
 					links_embed = discord.Embed(
 						title = 'RMIT Links',
 						description = link_title + ' - ' + link_description,
 						colour = 0xE00303
 						)
-
 					if link_text_1 != '':
 						links_embed.add_field(name=link_title, value=link_text_1)
 					if link_text_2 != '':
@@ -144,13 +149,10 @@ async def building(ctx, arg=None):
 				building_campus = building_data[3]
 				if building_campus == 'Melbourne City Campus':
 					melbourne_buildings = melbourne_buildings + building_name + ', '
-					
 				elif building_campus == 'Bundoora Campus':
 					bundoora_buildings = bundoora_buildings + building_name + ', '
-					
 				elif building_campus == 'Brunswick Campus':
 					brunswick_buildings = brunswick_buildings + building_name + ', '
-				
 			await ctx.send('**Melbourne City Campus**\n' + melbourne_buildings)
 			await ctx.send('**Bundoora Campus**\n' + bundoora_buildings)
 			await ctx.send('**Brunswick Campus**\n' + brunswick_buildings)
@@ -173,7 +175,6 @@ async def building(ctx, arg=None):
 					building_embed.set_image(url='https://maps.googleapis.com/maps/api/staticmap?center=' + parse_url + '&markers=' + parse_url + '&zoom=16&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk')
 					await ctx.send(embed=building_embed)
 					
-
 @bot.command()
 async def help(ctx):
 	help_embed = discord.Embed(
