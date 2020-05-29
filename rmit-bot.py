@@ -56,14 +56,16 @@ async def createchat(ctx, *, arg):
 	club_role = await guild.create_role(name=category.name)
 	club_role_lead = await guild.create_role(name=category.name + ' mod')
 	
-	text_channel = await guild.create_text_channel(category_abbrev + '-info', category=category)
-	await text_channel.edit(topic='Information about ' + category.name + '!')
-	await text_channel.set_permissions(club_role, send_message=False)
-	await text_channel.set_permissions(club_role_lead, send_message=True)
-	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
-	await text_channel.edit(topic='Discuss ' + category.name + '!')
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(club_role, read_messages=True, send_messages=True)
+	
+	text_channel = await guild.create_text_channel(category_abbrev + '-info', category=category)
+	await text_channel.edit(topic='Information about ' + category.name + '!')
+	
+	await text_channel.set_permissions(club_role, send_messages=False)
+	await text_channel.set_permissions(club_role_lead, send_messages=True)
+	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
+	await text_channel.edit(topic='Discuss ' + category.name + '!')
 	await ctx.send('Created club `' + category.name + '`')
 
 @bot.command(aliases=['removecourse'])
