@@ -201,7 +201,7 @@ async def importantdates(ctx):
 			date_time = date_data[0]
 			date_name = date_data[1]
 			if date_time > melb_now:
-				await ctx.send(date_time + ' - **' + date_name + '**')
+				await ctx.send('**' + date_time + '** - ' + date_name)
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
