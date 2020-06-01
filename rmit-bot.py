@@ -196,12 +196,14 @@ async def importantdates(ctx):
 	melb_now = tz_now.strftime("%d/%m/%y")
 	with open('data/important-dates-sem-2.csv') as f:
 		importantdates = f.read().splitlines()
+		upcoming_dates = ''
 		for date in importantdates:
 			date_data = date.split(',')
 			date_time = date_data[0]
 			date_name = date_data[1]
 			if date_time > melb_now:
-				await ctx.send('**' + date_time + '** - ' + date_name)
+				upcoming_dates = upcoming_dates + '**' + date_time + '** - ' + date_name + '\n')
+		await ctx.send(upcoming_dates)
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
