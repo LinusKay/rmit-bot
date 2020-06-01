@@ -212,15 +212,15 @@ async def importantdates(ctx):
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
-	help_embed = discord.Embed(
+	embed = discord.Embed(
 		title = 'RMIT Bot Commands',
 		description = 'Find out what I can do! This bot is an on-going project, and I am always taking suggestions. Please do not hesitate to contact me if you have any suggestions or questions in regards to it @libus#5949.',
 		colour = 0xE00303
 		)
-	help_embed.add_field(name='.rmit findbuilding [building number]', value='Find a specific RMIT building. Not including a parameter will display all buildings. Also try: findbuilding/building', inline=False)
-	help_embed.add_field(name='.rmit links [building number]', value='Browse a selection of shortcuts to RMIT services. Not including a parameter will display all available links. Also try: linkme', inline=False)
-	help_embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
-	await ctx.send(embed=help_embed)
+	embed.add_field(name='.rmit findbuilding [building number]', value='Find a specific RMIT building. Not including a parameter will display all buildings. Also try: findbuilding/building', inline=False)
+	embed.add_field(name='.rmit links [building number]', value='Browse a selection of shortcuts to RMIT services. Not including a parameter will display all available links. Also try: linkme', inline=False)
+	embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
+	await ctx.send(embed=embed)
 
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
