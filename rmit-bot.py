@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
+from datetime import datetime
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 
@@ -42,31 +43,6 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 	await ctx.send('Created course `' + category.name + '`')
-	
-@bot.command(aliases=['addchat'])
-@has_permissions(administrator=True)
-async def createchat(ctx, *, arg):
-	guild = ctx.message.guild
-	categories = guild.categories
-	category = await guild.create_category(arg)
-	words = category.name.split()
-	letters = [word[0] for word in words]
-	category_abbrev = "".join(letters)
-	
-	club_role = await guild.create_role(name=category.name)
-	club_role_lead = await guild.create_role(name=category.name + ' mod')
-	
-	await category.set_permissions(guild.default_role, read_messages=False)
-	await category.set_permissions(club_role, read_messages=True, send_messages=True)
-	
-	text_channel = await guild.create_text_channel(category_abbrev + '-info', category=category)
-	await text_channel.edit(topic='Information about ' + category.name + '!')
-	
-	await text_channel.set_permissions(club_role, send_messages=False)
-	await text_channel.set_permissions(club_role_lead, send_messages=True)
-	text_channel = await guild.create_text_channel(category_abbrev + '-general', category=category)
-	await text_channel.edit(topic='Discuss ' + category.name + '!')
-	await ctx.send('Created club `' + category.name + '`')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
@@ -204,6 +180,12 @@ async def building(ctx, arg=None):
 @bot.command()
 async def ping(ctx):
 	await ctx.send(f'Pong! {bot.latency}')
+	
+@bot.command()
+async def time(ctx):
+	now = datetime.now()
+	current_time = now.strftime("%H:%M:%S")
+	await ctx.send(current_time)
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
