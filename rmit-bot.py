@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 from datetime import datetime
+import pytz
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 
@@ -183,9 +184,13 @@ async def ping(ctx):
 	
 @bot.command()
 async def time(ctx):
-	now = datetime.now()
-	current_time = now.strftime("%H:%M:%S")
-	await ctx.send(current_time)
+	tz_NY = pytz.timezone('America/New_York') 
+	datetime_NY = datetime.now(tz_NY)
+	await ctx.send("NY time:", datetime_NY.strftime("%H:%M:%S"))
+	
+	tz_MB = pytz.timezone('Australia/Melbourne')
+	datetime_MB = datetime.now(tz_MB)
+	await ctx.send("Melb time:", datetime_MB.strftime("%H:%M:%S"))
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
