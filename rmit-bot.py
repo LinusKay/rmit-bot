@@ -184,9 +184,9 @@ async def ping(ctx):
 	
 @bot.command()
 async def time(ctx):
-	tz_MB = pytz.timezone('Australia/Melbourne')
-	datetime_MB = datetime.now(tz_MB)
-	await ctx.send("Melb time:", datetime_MB.strftime("%H:%M:%S"))
+	tz = pytz.timezone('Europe/Berlin')
+	berlin_now = datetime.now(tz)
+	await ctx.send(berlin_now)
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
