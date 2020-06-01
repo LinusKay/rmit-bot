@@ -9,7 +9,6 @@ chardet==3.0.4
 colorama==0.3.9
 crayons==0.1.2
 cryptography==2.3.1
-discord.py==1.3.0a2174+gc92ca4e
 idna==2.7
 idna-ssl==1.1.0
 multidict==4.7.2
