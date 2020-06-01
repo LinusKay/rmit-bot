@@ -3,7 +3,6 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 from datetime import datetime
 import pytz
-from dateutil.parser import parse
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 
@@ -186,7 +185,7 @@ async def ping(ctx):
 @bot.command()
 async def time(ctx):
 	tz = pytz.timezone('Australia/Melbourne')
-	tz_now = datetime.now(tz)
+	tz_now = tz.now()
 	melb_now = tz_now.strftime("%H:%M:%S")
 	await ctx.send(melb_now)
 	
