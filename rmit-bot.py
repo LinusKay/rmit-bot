@@ -186,8 +186,22 @@ async def ping(ctx):
 async def time(ctx):
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
-	melb_now = tz_now.strftime("Current Melbourne Time: %y/%m/%d %H:%M")
+	melb_now = tz_now.strftime("Current Melbourne Time: %H:%M on %d/%m/%y")
 	await ctx.send(str(melb_now))
+
+@bot.command()
+async def importantdates(ctx):
+	tz = pytz.timezone('Australia/Melbourne')
+	tz_now = datetime.now(tz)
+	melb_now = tz_now.strftime("%d/%m/%y")
+	with open('data/important-dates-sem-2.csv') as f:
+		importantdates = f.read().splitlines()
+		for date in importantdates:
+			date_data = date.split(',')
+			date_time = date_data[0]
+			date_name = date_data[1]
+			if date_time > melb_now:
+				await ctx.send(date_time)
 	
 @bot.command(aliases=['about'])
 async def help(ctx):
