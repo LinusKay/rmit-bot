@@ -213,8 +213,9 @@ async def importantdates(ctx):
 
 @bot.command()
 async def vote(ctx, message_id):
-	await ctx.add_reaction('👍')
-	await ctx.add_reaction('👎')
+	message = await ctx.fetch_message(message_id)
+	await message.add_reaction('👍')
+	await message.add_reaction('👎')
 
 @bot.command(aliases=['about'])
 async def help(ctx):
