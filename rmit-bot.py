@@ -202,7 +202,7 @@ async def importantdates(ctx):
 			date_time = date_data[0]
 			date_name = date_data[1]
 			if date_time > melb_now:
-				upcoming_dates = upcoming_dates + '**' + date_time + '** - ' + date_name + '\n')
+				upcoming_dates = upcoming_dates + '**' + date_time + '** - ' + date_name + '\n'
 		await ctx.send(upcoming_dates)
 	
 @bot.command(aliases=['about'])
