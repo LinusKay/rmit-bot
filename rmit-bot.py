@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
-log_channel_id = 715102392898682890
+log_channel_id = 717209203093012520
 
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
@@ -59,7 +59,7 @@ async def createcourse(ctx, *, arg):
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
 	log_channel = bot.get_channel(log_channel_id)
-	await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
@@ -88,7 +88,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 			tz_now = datetime.now(tz)
 			melb_now = tz_now.strftime("%H:%M:%S")
 			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -122,7 +122,7 @@ async def archivecourse(ctx, cat_id):
 			tz_now = datetime.now(tz)
 			melb_now = tz_now.strftime("%H:%M:%S")
 			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
@@ -250,6 +250,16 @@ async def vote(ctx, message_id):
 	message = await ctx.fetch_message(message_id)
 	await message.add_reaction('⬆️')
 	await message.add_reaction('⬇️')
+	message_text = message.content
+	message_author = str(message.author)
+	log_user = str(ctx.message.author)
+	log_action = 'started vote on message `' + message_text + '` from `' + message_author + '`'
+	log_server = guild.name
+	tz = pytz.timezone('Australia/Melbourne')
+	tz_now = datetime.now(tz)
+	melb_now = tz_now.strftime("%H:%M:%S")
+	log_channel = bot.get_channel(log_channel_id)
+	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['about'])
 async def help(ctx):
