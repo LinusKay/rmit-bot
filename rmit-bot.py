@@ -20,21 +20,7 @@ async def on_ready():
 async def on_member_join(member):
 	channel = discord.utils.get(member.guild.channels, name="general")
 	welcome_channel = bot.get_channel(684986753659961408)
-	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and join course groups!')
-	
-@bot.event
-async def on_voice_state_update(member,before,after):
-	channel = bot.get_channel(log_channel_id)
-	guild = after.channel.guild
-	if after.channel.id == 715104816786964591:
-		await channel.send('create private')
-		categories = guild.categories
-		for category in categories:
-			if category.id == int(715104781185712158):
-				new_channel = await guild.create_voice_channel(member.name + "'s channel", category=category)
-				with open('data/voice-channels.csv', 'a') as f:
-					f.write(guild.id + ',' + new_channel.id + ',' + member.id)
-				await member.edit(voice_channel = new_channel)		
+	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and join course groups!')		
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
@@ -246,8 +232,9 @@ async def importantdates(ctx):
 			date_time = date_data[0]
 			date_name = date_data[1]
 			if date_time > melb_now:
+				time_until = date_time - melb_now
 				if(len(upcoming_dates) <= 1900):
-					upcoming_dates = upcoming_dates + '**' + str(date_time) + '** - ' + date_name + '\n'
+					upcoming_dates = time_until + ' ' + upcoming_dates + '**' + str(date_time) + '** - ' + date_name + '\n'
 				else:
 					upcoming_dates_2 = upcoming_dates_2 + '**' + str(date_time) + '** - ' + date_name + '\n'
 		await ctx.send('Upcoming Important Higher Education Dates')
