@@ -52,7 +52,7 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 	await ctx.send('Created course `' + category.name + '`')
 	log_channel = bot.get_channel(log_channel_id)
-	command_user = ctx.author
+	command_user = ctx.message.author.name
 	await log_channel.send(command_user + ' created course `' + category.name + '`')
 
 @bot.command(aliases=['removecourse'])
