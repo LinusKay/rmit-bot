@@ -24,7 +24,7 @@ async def on_member_join(member):
 async def on_voice_state_update(member,before,after):
 	channel = bot.get_channel(715102392898682890)
 	await channel.send(str(before.channel))
-	await channel.send(str(after.channel))
+	await channel.send(str(after.channel.id))
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
