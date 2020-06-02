@@ -29,6 +29,7 @@ async def on_voice_state_update(member,before,after):
 
 @bot.event
 async def on_message_delete(message):
+	channel = bot.get_channel(717209203093012520)
 	await message.channel.send('aaa')
 #	log_user = str(message.author)
 #	await channel.send('1')
