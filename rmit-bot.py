@@ -19,6 +19,12 @@ async def on_member_join(member):
 	channel = discord.utils.get(member.guild.channels, name="general")
 	welcome_channel = bot.get_channel(684986753659961408)
 	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and join course groups!')
+	
+@bot.event
+async def on_voice_state_update(member,before,after):
+	channel = bot.get_channel(715102392898682890)
+	await channel.send(str(before))
+	await channel.send(str(after))
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
