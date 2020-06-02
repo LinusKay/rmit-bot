@@ -258,7 +258,7 @@ async def vote(ctx, message_id):
 	await ctx.send('2')
 	log_action = 'started vote on message `' + message_text + '` from `' + message_author + '`'
 	await ctx.send('3')
-	log_server = guild.name
+	log_server = ctx.message.guild.name
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
