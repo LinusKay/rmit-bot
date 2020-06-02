@@ -27,6 +27,17 @@ async def on_voice_state_update(member,before,after):
 	await channel.send(str(before.channel))
 	await channel.send(str(after.channel.id))
 
+@bot.event
+async def on_message_delete(message):
+	log_user = str(message.author)
+	log_action = 'deleted message `' + message.content + '`'
+	log_server = guild.name
+	tz = pytz.timezone('Australia/Melbourne')
+	tz_now = datetime.now(tz)
+	melb_now = tz_now.strftime("%H:%M:%S")
+	log_channel = bot.get_channel(log_channel_id)
+	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
+
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
 async def createcourse(ctx, *, arg):
@@ -59,7 +70,7 @@ async def createcourse(ctx, *, arg):
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
 	log_channel = bot.get_channel(log_channel_id)
-	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
@@ -88,7 +99,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 			tz_now = datetime.now(tz)
 			melb_now = tz_now.strftime("%H:%M:%S")
 			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -122,7 +133,7 @@ async def archivecourse(ctx, cat_id):
 			tz_now = datetime.now(tz)
 			melb_now = tz_now.strftime("%H:%M:%S")
 			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
@@ -264,7 +275,7 @@ async def vote(ctx, message_id):
 	melb_now = tz_now.strftime("%H:%M:%S")
 	log_channel = bot.get_channel(log_channel_id)
 	await ctx.send('4')
-	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
+	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
 @bot.command(aliases=['about'])
 async def help(ctx):
