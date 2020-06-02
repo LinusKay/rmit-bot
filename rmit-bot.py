@@ -29,16 +29,17 @@ async def on_voice_state_update(member,before,after):
 
 @bot.event
 async def on_message_delete(message):
+	channel = bot.get_channel(715102392898682890)
 	log_user = str(message.author)
-	await message.channel.send('1')
+	await channel.send('1')
 	log_action = 'deleted message `' + message.content + '`'
-	await message.channel.send('2')
+	await channel.send('2')
 	log_server = message.guild.name
-	await message.channel.send('3')
+	await channel.send('3')
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
-	await message.channel.send('4')
+	await channel.send('4')
 	log_channel = bot.get_channel(log_channel_id)
 	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
