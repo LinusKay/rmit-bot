@@ -5,6 +5,7 @@ from datetime import datetime
 import pytz
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
+log_channel_id = 715102392898682890
 
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
@@ -22,7 +23,7 @@ async def on_member_join(member):
 	
 @bot.event
 async def on_voice_state_update(member,before,after):
-	channel = bot.get_channel(715102392898682890)
+	channel = bot.get_channel(log_channel_id)
 	await channel.send(str(before.channel))
 	await channel.send(str(after.channel.id))
 
@@ -50,6 +51,8 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 	await ctx.send('Created course `' + category.name + '`')
+	log_channel = bot.get_channel(log_channel_id)
+	await log_channel.send('Created course `' + category.name + '`')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
