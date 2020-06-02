@@ -31,7 +31,7 @@ async def on_voice_state_update(member,before,after):
 async def on_message_delete(message):
 	log_user = str(message.author)
 	log_action = 'deleted message `' + message.content + '`'
-	log_server = guild.name
+	log_server = message.guild.name
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
@@ -264,17 +264,13 @@ async def vote(ctx, message_id):
 	
 	message_text = message.content
 	message_author = str(message.author)
-	await ctx.send('1')
 	log_user = str(ctx.message.author)
-	await ctx.send('2')
 	log_action = 'started vote on message `' + message_text + '` from `' + message_author + '`'
-	await ctx.send('3')
 	log_server = ctx.message.guild.name
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
 	log_channel = bot.get_channel(log_channel_id)
-	await ctx.send('4')
 	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
 
 @bot.command(aliases=['about'])
