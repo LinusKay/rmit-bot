@@ -53,16 +53,18 @@ async def createcourse(ctx, *, arg):
 	await ctx.send('Created course `' + category.name + '`')
 	
 	log_user = str(ctx.message.author)
-	log_server = guild.name
 	log_action = 'created course `' + category.name + '`'
+	log_server = guild.name
+	await ct
 	log(log_user, log_action, log_server)
 
 async def log(user, action, server):
+	channel = bot.get_channel(log_channel_id)
+	await channel.send('aaa')
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
-	log_channel = bot.get_channel(log_channel_id)
-	await log_channel.send(melb_now + ' - `' + user + '` ' + action + ' in `' + server + '`')
+	await channel.send(melb_now + ' - `' + user + '` ' + action + ' in `' + server + '`')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
