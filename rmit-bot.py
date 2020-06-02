@@ -31,7 +31,8 @@ async def on_voice_state_update(member,before,after):
 		categories = guild.categories
 		for category in categories:
 			if category.id == int(715104781185712158):
-				await guild.create_voice_channel('test', category=category)
+				new_channel = await guild.create_voice_channel(member.name + "'s channel", category=category)
+				member.edit(voice_channel = new_channel)
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
