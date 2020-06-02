@@ -250,15 +250,20 @@ async def vote(ctx, message_id):
 	message = await ctx.fetch_message(message_id)
 	await message.add_reaction('⬆️')
 	await message.add_reaction('⬇️')
+	
 	message_text = message.content
 	message_author = str(message.author)
+	await ctx.send('1')
 	log_user = str(ctx.message.author)
+	await ctx.send('2')
 	log_action = 'started vote on message `' + message_text + '` from `' + message_author + '`'
+	await ctx.send('3')
 	log_server = guild.name
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
 	log_channel = bot.get_channel(log_channel_id)
+	await ctx.send('4')
 	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['about'])
