@@ -219,28 +219,6 @@ async def time(ctx):
 	await ctx.send(str(melb_now))
 
 @bot.command()
-async def importantdates(ctx):
-	tz = pytz.timezone('Australia/Melbourne')
-	tz_now = datetime.now(tz)
-	melb_now = tz_now.strftime("%d/%m/%y")
-	with open('data/important-dates-sem-2.csv') as f:
-		importantdates = f.read().splitlines()
-		upcoming_dates = ''
-		upcoming_dates_2 = ''
-		for date in importantdates:
-			date_data = date.split(',')
-			date_time = date_data[0]
-			date_name = date_data[1]
-			if date_time > melb_now:
-				if(len(upcoming_dates) <= 1900):
-					upcoming_dates = upcoming_dates + '**' + str(date_time) + '** - ' + date_name + '\n'
-				else:
-					upcoming_dates_2 = upcoming_dates_2 + '**' + str(date_time) + '** - ' + date_name + '\n'
-		await ctx.send('Upcoming Important Higher Education Dates')
-		await ctx.send(upcoming_dates)
-		await ctx.send(upcoming_dates_2)
-
-@bot.command()
 async def vote(ctx, message_id):
 	message = await ctx.fetch_message(message_id)
 	await message.add_reaction('⬆️')
