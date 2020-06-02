@@ -24,25 +24,8 @@ async def on_member_join(member):
 @bot.event
 async def on_voice_state_update(member,before,after):
 	channel = bot.get_channel(log_channel_id)
-	await channel.send(str(before.channel))
-	await channel.send(str(after.channel.id))
-
-@bot.event
-async def on_message_delete(message):
-	channel = bot.get_channel(717209203093012520)
-	await message.channel.send('aaa')
-#	log_user = str(message.author)
-#	await channel.send('1')
-#	log_action = 'deleted message `' + message.content + '`'
-#	await channel.send('2')
-#	log_server = message.guild.name
-#	await channel.send('3')
-#	tz = pytz.timezone('Australia/Melbourne')
-#	tz_now = datetime.now(tz)
-#	melb_now = tz_now.strftime("%H:%M:%S")
-#	await channel.send('4')
-#	log_channel = bot.get_channel(log_channel_id)
-#	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
+	if after.channel.id == 715104816786964591:
+		await channel.send('create private')
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
