@@ -6,6 +6,7 @@ import pytz
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 log_channel_id = 717209203093012520
+voice_channel_category = 715104781185712158
 
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
@@ -26,6 +27,10 @@ async def on_voice_state_update(member,before,after):
 	channel = bot.get_channel(log_channel_id)
 	if after.channel.id == 715104816786964591:
 		await channel.send('create private')
+		categories = guild.categories
+		for category in categories:
+			if category.id == int(715104781185712158):
+				await guild.create_voice_channel('test', category=category)
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
