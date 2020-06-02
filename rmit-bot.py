@@ -209,7 +209,7 @@ async def building(ctx, arg=None):
 					
 @bot.command()
 async def ping(ctx):
-	await ctx.send(f'Pong! {bot.latency}')
+	await ctx.send(f'Pong! {round(bot.latency, 1)}')
 	
 @bot.command()
 async def time(ctx):
@@ -232,11 +232,8 @@ async def importantdates(ctx):
 			date_time = date_data[0]
 			date_name = date_data[1]
 			if date_time > melb_now:
-				date_time_unroll = datetime.datetime.strptime(date_time, "%d/%m/%y")
-				melb_now_unroll = datetime.datetime.strptime(melb_now, "%d/%m/%y")
-				time_until = (date_time - melb_now).total_seconds() / 60
 				if(len(upcoming_dates) <= 1900):
-					upcoming_dates = str(time_until) + ' ' + upcoming_dates + '**' + str(date_time) + '** - ' + date_name + '\n'
+					upcoming_dates = upcoming_dates + '**' + str(date_time) + '** - ' + date_name + '\n'
 				else:
 					upcoming_dates_2 = upcoming_dates_2 + '**' + str(date_time) + '** - ' + date_name + '\n'
 		await ctx.send('Upcoming Important Higher Education Dates')
