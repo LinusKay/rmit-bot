@@ -58,6 +58,7 @@ async def createcourse(ctx, *, arg):
 	await ctx.send('1')
 	log(ctx, log_user, log_action, log_server)
 	
+@bot.command()	
 async def log(ctx, user, action, server):
 	channel_name = bot.get_channel(715102392898682890)
 	await ctx.send('2')
