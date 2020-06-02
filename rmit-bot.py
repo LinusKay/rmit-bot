@@ -55,10 +55,10 @@ async def createcourse(ctx, *, arg):
 	log_user = str(ctx.message.author)
 	log_action = 'created course `' + category.name + '`'
 	log_server = guild.name
-	log_channel = bot.get_channel(715102392898682890)
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
+	log_channel = bot.get_channel(log_channel_id)
 	await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['removecourse'])
@@ -80,6 +80,15 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 					if role.name == category.name:
 						await ctx.send("Deleted role `" + role.name + '`')
 						await role.delete()
+						
+			log_user = str(ctx.message.author)
+			log_action = 'deleted course `' + category.name + '`'
+			log_server = guild.name
+			tz = pytz.timezone('Australia/Melbourne')
+			tz_now = datetime.now(tz)
+			melb_now = tz_now.strftime("%H:%M:%S")
+			log_channel = bot.get_channel(log_channel_id)
+			await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -105,6 +114,15 @@ async def archivecourse(ctx, cat_id):
 			for channel in channels:
 				await channel.edit(category=archive_category)
 			await category.delete()
+			
+			log_user = str(ctx.message.author)
+			log_action = 'archived course `' + category.name + '`'
+			log_server = guild.name
+			tz = pytz.timezone('Australia/Melbourne')
+			tz_now = datetime.now(tz)
+			melb_now = tz_now.strftime("%H:%M:%S")
+			log_channel = bot.get_channel(log_channel_id)
+			await log_channel.send(melb_now + ' - `' + log_user + '` ' + log_action + ' in `' + log_server + '`')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
