@@ -55,11 +55,12 @@ async def createcourse(ctx, *, arg):
 	log_user = str(ctx.message.author)
 	log_action = 'created course `' + category.name + '`'
 	log_server = guild.name
-	log(log_user, log_action, log_server)
-
-async def log(user, action, server):
-	channel = bot.get_channel(log_channel_id)
-	await channel.send('aaa')
+	await channel.send('1')
+	log(ctx, log_user, log_action, log_server)
+	
+async def log(ctx, user, action, server):
+	channel_name = bot.get_channel(715102392898682890)
+	await ctx.send('2')
 	tz = pytz.timezone('Australia/Melbourne')
 	tz_now = datetime.now(tz)
 	melb_now = tz_now.strftime("%H:%M:%S")
