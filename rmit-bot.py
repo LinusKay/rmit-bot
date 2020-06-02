@@ -25,6 +25,7 @@ async def on_member_join(member):
 @bot.event
 async def on_voice_state_update(member,before,after):
 	channel = bot.get_channel(log_channel_id)
+	guild = after.channel.guild
 	if after.channel.id == 715104816786964591:
 		await channel.send('create private')
 		categories = guild.categories
