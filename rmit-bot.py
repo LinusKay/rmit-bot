@@ -55,7 +55,6 @@ async def createcourse(ctx, *, arg):
 	log_user = str(ctx.message.author)
 	log_action = 'created course `' + category.name + '`'
 	log_server = guild.name
-	await ct
 	log(log_user, log_action, log_server)
 
 async def log(user, action, server):
