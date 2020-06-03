@@ -3,6 +3,9 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 from datetime import datetime
 import pytz
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 log_channel_id = 717209203093012520
