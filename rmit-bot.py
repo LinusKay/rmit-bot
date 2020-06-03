@@ -16,7 +16,7 @@ bot.remove_command("help")
 
 @bot.event
 async def on_ready():
-	print('online')
+	print('onlinaeaaaaaaaaaaaaaaaa')
 	await bot.change_presence(activity=discord.Game(name=".rmit help"))
 	
 @bot.event
