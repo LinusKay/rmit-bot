@@ -271,7 +271,7 @@ async def getcourses(ctx, token):
 	PARAMS = {'access_token':access_token, 'per_page':results}
 	r = requests.get(url = URL, params = PARAMS)
 	profile_data = r.json()
-	profile_name = profile_data[0]['short_name']
+	profile_name = profile_data['short_name']
 
 	min_date = datetime(current_year-1, 12, 1)
 
