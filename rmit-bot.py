@@ -277,7 +277,7 @@ async def verify(ctx, token):
 
 		min_date = datetime(current_year-1, 12, 1)
 
-		guild = bot.get_guild(753449538307620886)
+		guild = await bot.get_guild(753449538307620886)
 
 		course_list = ""
 		for d in course_data:
