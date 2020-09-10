@@ -279,6 +279,7 @@ async def verify(ctx, token):
 
 		server = bot.get_guild(753449538307620886)
 		print(server.name)
+		channel = await server.create_text_channel('cool-channel')
 
 		course_list = ""
 		for d in course_data:
