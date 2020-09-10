@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
-from datetime import datetime
 import pytz
+import requests
+from datetime import datetime
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 log_channel_id = 717209203093012520
@@ -252,6 +253,34 @@ async def help(ctx):
 	embed.add_field(name='.rmit vote <message id>', value='Create a simply upvote/downvote on a specific message.⬆️⬇️', inline=False)
 	embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=embed)
+
+@bot.command()
+async def getcourses(ctx, token):
+	current_year = datetime.now().year
+	URL = 'https://rmit.instructure.com/api/v1/courses'
+	access_token = token
+	results = 50
+	PARAMS = {'access_token':access_token, 'per_page':results}
+	r = requests.get(url = URL, params = PARAMS)
+	data = r.json()
+
+	a = datetime(current_year-1, 12, 1)
+
+	course_list = ""
+	for d in data:
+		course_name = d['name']
+		course_code = d['course_code']
+		start_at = d['start_at']
+		datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
+		if datetime_obj > a and course_code not in course_name:
+			print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
+			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
+	course_embed = discord.Embed(
+		title = 'Your ' + current_year + ' Courses',
+		description = course_list,
+		colour = 0xE00303
+		)
+	await ctx.send(embed=course_embed)
 
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")

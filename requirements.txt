@@ -1,2 +1,3 @@
 git+https://github.com/Rapptz/discord.py
 pytz==2020.1
+requests
