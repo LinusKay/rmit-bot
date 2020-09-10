@@ -296,5 +296,10 @@ async def getcourses(ctx, token):
 	course_embed.set_thumbnail(url=profile_avatar)
 	await ctx.send(embed=course_embed)
 
+@bot.event
+async def on_message(message):
+	if message.guild is None and message.author != bot.user:
+		await message.channel.send('test')
+
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
