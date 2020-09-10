@@ -256,50 +256,46 @@ async def help(ctx):
 
 @bot.command()
 async def getcourses(ctx, token):
-	current_year = datetime.now().year
+	if ctx.guild is None:
+		current_year = datetime.now().year
 
-	URL = 'https://rmit.instructure.com/api/v1/courses'
-	access_token = token
-	results = 50
-	PARAMS = {'access_token':access_token, 'per_page':results}
-	r = requests.get(url = URL, params = PARAMS)
-	course_data = r.json()
+		URL = 'https://rmit.instructure.com/api/v1/courses'
+		access_token = token
+		results = 50
+		PARAMS = {'access_token':access_token, 'per_page':results}
+		r = requests.get(url = URL, params = PARAMS)
+		course_data = r.json()
 
-	URL = 'https://rmit.instructure.com/api/v1/users/self/profile'
-	access_token = token
-	results = 50
-	PARAMS = {'access_token':access_token, 'per_page':results}
-	r = requests.get(url = URL, params = PARAMS)
-	profile_data = r.json()
-	profile_name = profile_data['short_name']
-	profile_avatar = profile_data['avatar_url']
+		URL = 'https://rmit.instructure.com/api/v1/users/self/profile'
+		access_token = token
+		results = 50
+		PARAMS = {'access_token':access_token, 'per_page':results}
+		r = requests.get(url = URL, params = PARAMS)
+		profile_data = r.json()
+		profile_name = profile_data['short_name']
+		profile_avatar = profile_data['avatar_url']
 
-	min_date = datetime(current_year-1, 12, 1)
+		min_date = datetime(current_year-1, 12, 1)
 
-	course_list = ""
-	for d in course_data:
-		course_name = d['name']
-		course_code = d['course_code']
-		start_at = d['start_at']
-		datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
-		if datetime_obj > min_date and course_code not in course_name:
-			print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
-			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
+		course_list = ""
+		for d in course_data:
+			course_name = d['name']
+			course_code = d['course_code']
+			start_at = d['start_at']
+			datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
+			if datetime_obj > min_date and course_code not in course_name:
+				print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
+				course_list = course_list + "[" + course_code + "] " + course_name + "\n"
 
-	course_embed = discord.Embed(
-		title = profile_name + ' - ' + str(current_year) + ' Courses',
-		description = course_list,
-		colour = 0xE00303
-		)
+		course_embed = discord.Embed(
+			title = profile_name + ' - ' + str(current_year) + ' Courses',
+			description = course_list,
+			colour = 0xE00303
+			)
 
-	course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
-	course_embed.set_thumbnail(url=profile_avatar)
-	await ctx.send(embed=course_embed)
-
-@bot.event
-async def on_message(message):
-	if message.guild is None and message.author != bot.user:
-		await message.channel.send('test')
+		course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
+		course_embed.set_thumbnail(url=profile_avatar)
+		await ctx.send(embed=course_embed)
 
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
