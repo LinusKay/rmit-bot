@@ -276,7 +276,7 @@ async def getcourses(ctx, token):
 			print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
 			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
 	course_embed = discord.Embed(
-		title = 'Your ' + current_year + ' Courses',
+		title = 'Your ' + str(current_year) + ' Courses',
 		description = course_list,
 		colour = 0xE00303
 		)
