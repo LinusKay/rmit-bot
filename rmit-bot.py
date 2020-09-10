@@ -255,7 +255,7 @@ async def help(ctx):
 	await ctx.send(embed=embed)
 
 @bot.command()
-async def getcourses(ctx, token):
+async def verify(ctx, token):
 	if ctx.guild is None:
 		current_year = datetime.now().year
 
@@ -303,7 +303,7 @@ async def getcourses(ctx, token):
 			description = ctx.message.author.mention + ' this command is only available via DM to protect your security! Please consider regenerating your OAUTH key.',
 			colour = 0xE00303
 		)
-		course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
+		error_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
 		await ctx.send(embed=error_embed)
 
 #run bot
