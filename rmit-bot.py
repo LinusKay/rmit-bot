@@ -272,6 +272,7 @@ async def getcourses(ctx, token):
 	r = requests.get(url = URL, params = PARAMS)
 	profile_data = r.json()
 	profile_name = profile_data['short_name']
+	profile_avatar = profile_data['avatar_url']
 
 	min_date = datetime(current_year-1, 12, 1)
 
@@ -286,10 +287,13 @@ async def getcourses(ctx, token):
 			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
 
 	course_embed = discord.Embed(
-		title = 'Your ' + str(current_year) + ' Courses, ' + profile_name,
+		title = profile_name + ' - ' + str(current_year) + ' Courses' + ,
 		description = course_list,
 		colour = 0xE00303
 		)
+
+	course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
+	course_embed.set_thumbnail(url=profile_avatar)
 	await ctx.send(embed=course_embed)
 
 #run bot
