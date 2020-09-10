@@ -277,7 +277,8 @@ async def verify(ctx, token):
 
 		min_date = datetime(current_year-1, 12, 1)
 
-		server = get_guild(753449538307620886)
+		server = bot.get_guild(753449538307620886)
+		await server.create_text_channel('aaaaaaa')
 
 		course_list = ""
 		for d in course_data:
@@ -286,8 +287,6 @@ async def verify(ctx, token):
 			start_at = d['start_at']
 			datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
 			if datetime_obj > min_date and course_code not in course_name:
-				channel = await server.create_text_channel(course_name)
-				await channel.edit(topic=course_code)
 				course_list = course_list + "[" + course_code + "] " + course_name + "\n"
 
 		course_embed = discord.Embed(
