@@ -276,6 +276,8 @@ async def verify(ctx, token):
 		profile_avatar = profile_data['avatar_url']
 
 		min_date = datetime(current_year-1, 12, 1)
+		verification_role = bot.get_role(753570554967228437)
+		await ctx.message.author.add_roles(verification_role)
 
 		course_list = ""
 		for d in course_data:
