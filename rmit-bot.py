@@ -296,6 +296,9 @@ async def getcourses(ctx, token):
 		course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
 		course_embed.set_thumbnail(url=profile_avatar)
 		await ctx.send(embed=course_embed)
+	else:
+		await ctx.message.delete()
+		await ctx.send(ctx.message.author.mention + ' this command is only available via DM to protect your security! Please consider regenerating your OAUTH key.')
 
 #run bot
 bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
