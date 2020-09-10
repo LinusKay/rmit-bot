@@ -257,14 +257,8 @@ async def help(ctx):
 @bot.command()
 async def getcourses(ctx, token):
 	current_year = datetime.now().year
-
-	URL = 'https://rmit.instructure.com/api/v1/courses'
-	access_token = token
-	results = 50
-	PARAMS = {'access_token':access_token, 'per_page':results}
-	r = requests.get(url = URL, params = PARAMS)
-	course_data = r.json()
-
+	
+	#retrieve profile info
 	URL = 'https://rmit.instructure.com/api/v1/users/self/profile'
 	access_token = token
 	results = 50
@@ -274,8 +268,18 @@ async def getcourses(ctx, token):
 	profile_name = profile_data['short_name']
 	profile_avatar = profile_data['avatar_url']
 
+	#retrieve courses
+	URL = 'https://rmit.instructure.com/api/v1/courses'
+	access_token = token
+	results = 50
+	PARAMS = {'access_token':access_token, 'per_page':results}
+	r = requests.get(url = URL, params = PARAMS)
+	course_data = r.json()
+
+	#set minimum date for course start to end of previous year
 	min_date = datetime(current_year-1, 12, 1)
 
+	#iterate and filter every course
 	course_list = ""
 	for d in course_data:
 		course_name = d['name']
@@ -291,7 +295,6 @@ async def getcourses(ctx, token):
 		description = course_list,
 		colour = 0xE00303
 		)
-
 	course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
 	course_embed.set_thumbnail(url=profile_avatar)
 	await ctx.send(embed=course_embed)
