@@ -286,7 +286,7 @@ async def getcourses(ctx, token):
 			if datetime_obj > min_date and course_code not in course_name:
 				print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
 				course_list = course_list + "[" + course_code + "] " + course_name + "\n"
-
+		await ctx.send('aaaaaaaaaa')
 		course_embed = discord.Embed(
 			title = profile_name + ' - ' + str(current_year) + ' Courses',
 			description = course_list,
