@@ -286,7 +286,7 @@ async def getcourses(ctx, token):
 			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
 
 	course_embed = discord.Embed(
-		title = 'Your ' + str(current_year) + ' Courses, ' profile_name,
+		title = 'Your ' + str(current_year) + ' Courses, ' + profile_name,
 		description = course_list,
 		colour = 0xE00303
 		)
