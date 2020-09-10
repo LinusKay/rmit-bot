@@ -257,26 +257,36 @@ async def help(ctx):
 @bot.command()
 async def getcourses(ctx, token):
 	current_year = datetime.now().year
+
 	URL = 'https://rmit.instructure.com/api/v1/courses'
 	access_token = token
 	results = 50
 	PARAMS = {'access_token':access_token, 'per_page':results}
 	r = requests.get(url = URL, params = PARAMS)
-	data = r.json()
+	course_data = r.json()
 
-	a = datetime(current_year-1, 12, 1)
+	URL = 'https://rmit.instructure.com/api/v1/users/self/profile'
+	access_token = token
+	results = 50
+	PARAMS = {'access_token':access_token, 'per_page':results}
+	r = requests.get(url = URL, params = PARAMS)
+	profile_data = r.json()
+	profile_name = profile_data[0]['short_name']
+
+	min_date = datetime(current_year-1, 12, 1)
 
 	course_list = ""
-	for d in data:
+	for d in course_data:
 		course_name = d['name']
 		course_code = d['course_code']
 		start_at = d['start_at']
 		datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
-		if datetime_obj > a and course_code not in course_name:
+		if datetime_obj > min_date and course_code not in course_name:
 			print(str(datetime_obj.year) + ' - (' + course_code + ') ' + course_name)
 			course_list = course_list + "[" + course_code + "] " + course_name + "\n"
+
 	course_embed = discord.Embed(
-		title = 'Your ' + str(current_year) + ' Courses',
+		title = 'Your ' + str(current_year) + ' Courses, ' profile_name,
 		description = course_list,
 		colour = 0xE00303
 		)
