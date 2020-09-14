@@ -7,7 +7,8 @@ from datetime import datetime
 
 static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
 log_channel_id = 717209203093012520
-voice_channel_category = 715104781185712158
+home_server = 753449538307620886
+
 
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
@@ -295,6 +296,11 @@ async def verify(ctx, token):
 		course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
 		course_embed.set_thumbnail(url=profile_avatar)
 		await ctx.send(embed=course_embed)
+		
+		rmit_server = bot.get_guild(home_server)
+		await ctx.send(str(rmit_server))
+		
+		
 	else:
 		await ctx.message.delete()
 		error_embed = discord.Embed(
