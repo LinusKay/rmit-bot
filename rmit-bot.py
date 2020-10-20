@@ -4,11 +4,11 @@ from discord.ext.commands import has_permissions, MissingPermissions
 import pytz
 import requests
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-static_maps_API_key = 'AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk'
-log_channel_id = 717209203093012520
-home_server = 753449538307620886
-
+load_dotenv('.env')
+static_maps_API_key = os.getenv('MAPS_KEY')
 
 bot = commands.Bot(command_prefix='.rmit ')
 bot.remove_command("help")
@@ -49,16 +49,6 @@ async def createcourse(ctx, *, arg):
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
 	await ctx.send('Created course `' + category.name + '`')
-	
-	log_user = str(ctx.message.author)
-	log_action = 'created course `' + category.name + '`'
-	log_server = guild.name
-	tz = pytz.timezone('Australia/Melbourne')
-	tz_now = datetime.now(tz)
-	melb_now = tz_now.strftime("%H:%M:%S")
-	log_channel = bot.get_channel(log_channel_id)
-	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
-	print(melb_now + ' - ' + log_user + ' ' + log_action + ' in server ' + log_server + '')
 
 @bot.command(aliases=['removecourse'])
 @has_permissions(administrator=True)
@@ -79,16 +69,6 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 					if role.name == category.name:
 						await ctx.send("Deleted role `" + role.name + '`')
 						await role.delete()
-						
-			log_user = str(ctx.message.author)
-			log_action = 'deleted course `' + category.name + '`'
-			log_server = guild.name
-			tz = pytz.timezone('Australia/Melbourne')
-			tz_now = datetime.now(tz)
-			melb_now = tz_now.strftime("%H:%M:%S")
-			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
-			print(melb_now + ' - ' + log_user + ' ' + log_action + ' in server ' + log_server + '')
 
 @bot.command()
 @has_permissions(administrator=True)
@@ -114,16 +94,6 @@ async def archivecourse(ctx, cat_id):
 			for channel in channels:
 				await channel.edit(category=archive_category)
 			await category.delete()
-			
-			log_user = str(ctx.message.author)
-			log_action = 'archived course `' + category.name + '`'
-			log_server = guild.name
-			tz = pytz.timezone('Australia/Melbourne')
-			tz_now = datetime.now(tz)
-			melb_now = tz_now.strftime("%H:%M:%S")
-			log_channel = bot.get_channel(log_channel_id)
-			await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
-			print(melb_now + ' - ' + log_user + ' ' + log_action + ' in server ' + log_server + '')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
@@ -212,10 +182,6 @@ async def building(ctx, arg=None):
 					embed.add_field(name='Address', value=building_address + '\n[Get directions](https://www.google.com/maps?f=d&daddr=' + parse_url + ')\n[Download Campus Map](https://www.rmit.edu.au/content/dam/rmit/documents/maps/pdf-maps/rmit-' + parse_map + '-map.pdf)')
 					embed.set_image(url='https://maps.googleapis.com/maps/api/staticmap?center=' + parse_url + '&markers=' + parse_url + '&zoom=16&size=400x400&key=AIzaSyA6vEH85dgBFj-cuPW38lTXFsY84c-duxk')
 					await ctx.send(embed=embed)
-					
-@bot.command()
-async def ping(ctx):
-	await ctx.send(f'Pong! {round(bot.latency, 1)}')
 	
 @bot.command()
 async def time(ctx):
@@ -229,18 +195,6 @@ async def vote(ctx, message_id):
 	message = await ctx.fetch_message(message_id)
 	await message.add_reaction('⬆️')
 	await message.add_reaction('⬇️')
-	
-	message_text = message.content
-	message_author = str(message.author)
-	log_user = str(ctx.message.author)
-	log_action = 'started vote on message `' + message_text + '` from `' + message_author + '`'
-	log_server = ctx.message.guild.name
-	tz = pytz.timezone('Australia/Melbourne')
-	tz_now = datetime.now(tz)
-	melb_now = tz_now.strftime("%H:%M:%S")
-	log_channel = bot.get_channel(log_channel_id)
-	await log_channel.send('**' + melb_now + '** - `' + log_user + '` ' + log_action + ' in server `' + log_server + '`')
-	print(melb_now + ' - ' + log_user + ' ' + log_action + ' in server ' + log_server + '')
 
 @bot.command(aliases=['about'])
 async def help(ctx):
@@ -255,61 +209,5 @@ async def help(ctx):
 	embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=embed)
 
-@bot.command()
-async def verify(ctx, token):
-	if ctx.guild is None:
-		current_year = datetime.now().year
-
-		URL = 'https://rmit.instructure.com/api/v1/courses'
-		access_token = token
-		results = 50
-		PARAMS = {'access_token':access_token, 'per_page':results}
-		r = requests.get(url = URL, params = PARAMS)
-		course_data = r.json()
-
-		URL = 'https://rmit.instructure.com/api/v1/users/self/profile'
-		access_token = token
-		results = 50
-		PARAMS = {'access_token':access_token, 'per_page':results}
-		r = requests.get(url = URL, params = PARAMS)
-		profile_data = r.json()
-		profile_name = profile_data['short_name']
-		profile_avatar = profile_data['avatar_url']
-
-		min_date = datetime(current_year-1, 12, 1)
-
-		course_list = ""
-		for d in course_data:
-			course_name = d['name']
-			course_code = d['course_code']
-			start_at = d['start_at']
-			datetime_obj = datetime.strptime(start_at, '%Y-%m-%dT%H:%M:%SZ')
-			if datetime_obj > min_date and course_code not in course_name:
-				course_list = course_list + "[" + course_code + "] " + course_name + "\n"
-
-		course_embed = discord.Embed(
-			title = profile_name + ' - ' + str(current_year) + ' Courses',
-			description = course_list,
-			colour = 0xE00303
-			)
-
-		course_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
-		course_embed.set_thumbnail(url=profile_avatar)
-		await ctx.send(embed=course_embed)
-		
-		rmit_server = bot.get_guild(home_server)
-		await ctx.send(str(rmit_server))
-		
-		
-	else:
-		await ctx.message.delete()
-		error_embed = discord.Embed(
-			title = ":bangbang: Invalid command!",
-			description = ctx.message.author.mention + ' this command is only available via DM to protect your security! Please consider regenerating your OAUTH key.',
-			colour = 0xE00303
-		)
-		error_embed.set_author(name="Canvas LMS REST API", icon_url="https://www2.palomar.edu/pages/atrc/files/2017/01/Canvas-Logo.png")
-		await ctx.send(embed=error_embed)
-
 #run bot
-bot.run("NzE1MTEwOTQ0MTk1MzQ2NDg2.Xs4d2A.wocePR9Gj_xwjiuiG2pLDUkKxlw")
+bot.run(os.getenv('BOT_TOKEN'))
