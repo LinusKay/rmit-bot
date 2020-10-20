@@ -34,7 +34,6 @@ async def createcourse(ctx, *, arg):
 	else:
 		course_code = ''
 	guild = ctx.message.guild
-	categories = guild.categories
 	category = await guild.create_category(args[0])
 	words = category.name.split()
 	letters = [word[0] for word in words]
@@ -75,7 +74,6 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 async def archivecourse(ctx, cat_id):
 	guild = ctx.message.guild
 	categories = guild.categories
-	target_category = 0
 	archive_category = 0
 	match = False
 	i = 0
