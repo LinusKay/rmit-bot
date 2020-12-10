@@ -93,7 +93,7 @@ async def archivecourse(ctx, cat_id):
 			for channel in channels:
 				await channel.edit(category=archive_category)
 			await category.delete()
-			await ctx.send('category ' + category + ' archived!')
+			await ctx.send('category ' + category.name + ' archived!')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
