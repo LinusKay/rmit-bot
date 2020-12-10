@@ -74,7 +74,7 @@ async def deletecourse(ctx, cat_id, delete_role=None):
 async def archivecourse(ctx, cat_id):
 	guild = ctx.message.guild
 	categories = guild.categories
-	archive_category = 0
+	archive_category = None
 	match = False
 	i = 0
 	while(i < len(categories) and match==False):
@@ -83,13 +83,11 @@ async def archivecourse(ctx, cat_id):
 			await ctx.send('archive category found!')
 			match = True
 		i+=1
-	print(' '.join(map(str, categories)))
 	if match==False:
 		archive_category = await guild.create_category('archives')
 		await archive_category.set_permissions(guild.default_role, read_messages=False)
 	for category in categories:
 		if category.id == int(cat_id):
-			print(category)
 			channels = category.channels
 			for channel in channels:
 				await channel.edit(category=archive_category)
