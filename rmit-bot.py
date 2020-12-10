@@ -83,6 +83,7 @@ async def archivecourse(ctx, cat_id):
 			await ctx.send('archive category found!')
 			match = True
 		i+=1
+	print(' '.join(map(str, categories)))
 	if match==False:
 		archive_category = await guild.create_category('archives')
 		await archive_category.set_permissions(guild.default_role, read_messages=False)
