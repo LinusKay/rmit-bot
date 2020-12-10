@@ -88,7 +88,8 @@ async def archivecourse(ctx, cat_id):
 		await archive_category.set_permissions(guild.default_role, read_messages=False)
 	for category in categories:
 		if category.id == int(cat_id):
-			#channels = category.channels
+			channels = category.channels
+			print(type(archive_category))
 			#for channel in channels:
 			#	await channel.edit(category=archive_category)
 			await category.delete()
