@@ -79,7 +79,7 @@ async def archivecourse(ctx, cat_id):
 	i = 0
 	while(i < len(categories) and match==False):
 		if categories[i].name.lower() == 'archives':
-			archive_category = categories[i].id
+			archive_category = categories[i]
 			await ctx.send('archive category found!')
 			match = True
 		i+=1
@@ -90,9 +90,10 @@ async def archivecourse(ctx, cat_id):
 		if category.id == int(cat_id):
 			channels = category.channels
 			print(type(archive_category))
-			#for channel in channels:
-			#	await channel.edit(category=archive_category)
+			for channel in channels:
+				await channel.edit(category=archive_category)
 			await category.delete()
+			await ctx.send('category ' + category + ' archived!')
 
 @bot.command(aliases=['linkme'])
 async def links(ctx, *, arg=None):
