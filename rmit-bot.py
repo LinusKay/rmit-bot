@@ -88,6 +88,8 @@ async def archivecourse(ctx, cat_id):
 		archive_category = await guild.create_category('archives')
 		await archive_category.set_permissions(guild.default_role, read_messages=False)
 	for category in categories:
+		print(category)
+		print(str(category))
 		if category.id == int(cat_id):
 			channels = category.channels
 			for channel in channels:
