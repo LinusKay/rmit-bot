@@ -20,10 +20,13 @@ async def on_ready():
 	
 @bot.event
 async def on_member_join(member):
-	channel = discord.utils.get(member.guild.channels, name="general")
+	print('welcoming')
+	channel = bot.get_channel(684918307173695497)
 	welcome_channel = bot.get_channel(684986753659961408)
 	course_channel = bot.get_channel(772286681205440582)
-	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and ' + course_channel.mention + ' to set your roles/classes!')		
+	print('channels set')
+	await channel.send('**Welcome **' + member.mention + '!\nCheck out ' + welcome_channel.mention + ' to learn about the server and ' + course_channel.mention + ' to set your roles/classes!')	
+	print('welcomed')
 
 @bot.command(aliases=['addcourse'])
 @has_permissions(administrator=True)
