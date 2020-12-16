@@ -7,10 +7,13 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 
+intents = discord.Intents.default()
+intents.members = True
+
 load_dotenv('.env')
 static_maps_API_key = os.getenv('MAPS_KEY')
 
-bot = commands.Bot(command_prefix='.rmit ')
+bot = commands.Bot(command_prefix='.rmit ', intents=intents)
 bot.remove_command("help")
 
 @bot.event
