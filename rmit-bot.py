@@ -206,7 +206,7 @@ async def help(ctx):
 		colour = 0xE00303
 		)
 	embed.add_field(name='.rmit findbuilding [building number]', value='Find a specific RMIT building. Not including a parameter will display all buildings. Also try: findbuilding/building', inline=False)
-	embed.add_field(name='.rmit links [building number]', value='Browse a selection of shortcuts to RMIT services. Not including a parameter will display all available links. Also try: linkme', inline=False)
+	embed.add_field(name='.rmit links [section name]', value='Browse a selection of shortcuts to RMIT services. Not including a parameter will display all available links. Also try: linkme', inline=False)
 	embed.add_field(name='.rmit vote <message id>', value='Create a simply upvote/downvote on a specific message.⬆️⬇️', inline=False)
 	embed.set_footer(text = 'This bot was created by Linus Kay (libus#5949) and is by no means officially endorsed by RMIT')
 	await ctx.send(embed=embed)
