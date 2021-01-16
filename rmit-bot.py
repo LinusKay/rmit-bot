@@ -45,8 +45,6 @@ async def createcourse(ctx, *, arg):
 	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + '!')
 	text_channel = await guild.create_text_channel(category_abbrev + '-assignments', category=category)
 	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' assignments!')
-	text_channel = await guild.create_text_channel(category_abbrev + '-lectures', category=category)
-	await text_channel.edit(topic='Discuss ' + course_code + ' ' + category.name + ' lectures!')
 	course_role = await guild.create_role(name=category.name)
 	await category.set_permissions(guild.default_role, read_messages=False)
 	await category.set_permissions(course_role, read_messages=True, send_messages=True)
